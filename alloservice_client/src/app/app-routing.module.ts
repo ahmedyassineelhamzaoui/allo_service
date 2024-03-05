@@ -10,6 +10,7 @@ import { VerifyemailComponent } from './auth/components/verifyemail/verifyemail.
 import { LoginComponent } from './auth/components/login/login.component';
 import { NotfoundComponent } from './errors/notfound/notfound.component';
 import { NotauthorizeComponent } from './errors/notauthorize/notauthorize.component';
+import { ForbiddenComponent } from './errors/forbidden/forbidden.component';
 
 const routes: Routes = [
 
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'signup-worker', component: SigunpworkerComponent, data: { animation: 'SignupWorkerPage' } },
   { path: 'verify-email', component: VerifyemailComponent},
   {path:'notauthorize',component:NotauthorizeComponent},
+  {path:'forbidden',component:ForbiddenComponent},
   {path: '**', component: NotfoundComponent, pathMatch: 'full'},
 
 ];
