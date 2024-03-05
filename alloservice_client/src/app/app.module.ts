@@ -15,6 +15,7 @@ import { SigunpworkerComponent } from './auth/components/sigunpworker/sigunpwork
 import { SignupuserComponent } from './auth/components/signupuser/signupuser.component';
 import { VerifyemailComponent } from './auth/components/verifyemail/verifyemail.component';
 import { NotfoundComponent } from './errors/notfound/notfound.component';
+import { NotauthorizeComponent } from './erros/notauthorize/notauthorize.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NotfoundComponent } from './errors/notfound/notfound.component';
     SigunpworkerComponent,
     SignupuserComponent,
     VerifyemailComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    NotauthorizeComponent
   ],
   imports: [
     BrowserModule,
