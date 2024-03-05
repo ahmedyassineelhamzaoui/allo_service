@@ -13,7 +13,9 @@ h1 {
     font-weight: bold;
     color: #f33f3f;
 }
-
+h2{
+    font-weight: bolder;
+}
 p {
     font-size: 2em;
     margin-bottom: 1em;
