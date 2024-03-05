@@ -9,6 +9,7 @@ import { SigunpworkerComponent } from './auth/components/sigunpworker/sigunpwork
 import { VerifyemailComponent } from './auth/components/verifyemail/verifyemail.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { NotfoundComponent } from './errors/notfound/notfound.component';
+import { NotauthorizeComponent } from './errors/notauthorize/notauthorize.component';
 
 const routes: Routes = [
 
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'signup-user', component: SignupuserComponent, data: { animation: 'SignupUserPage' } },
   { path: 'signup-worker', component: SigunpworkerComponent, data: { animation: 'SignupWorkerPage' } },
   { path: 'verify-email', component: VerifyemailComponent},
-  {path: '**', component: NotfoundComponent, pathMatch: 'full'}
+  {path: '**', component: NotfoundComponent, pathMatch: 'full'},
+  {path:'notauthorize',component:NotauthorizeComponent}
 
 ];
 
