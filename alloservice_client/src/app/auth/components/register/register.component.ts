@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  isActive = false;
 
+  activate() {
+      this.isActive = true;
+  }
+
+  deactivate() {
+      this.isActive = false;
+  }
 }
