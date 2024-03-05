@@ -16,6 +16,7 @@ import { SignupuserComponent } from './auth/components/signupuser/signupuser.com
 import { VerifyemailComponent } from './auth/components/verifyemail/verifyemail.component';
 import { NotfoundComponent } from './errors/notfound/notfound.component';
 import { NotauthorizeComponent } from './errors/notauthorize/notauthorize.component';
+import { ForbiddenComponent } from './errors/forbidden/forbidden.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NotauthorizeComponent } from './errors/notauthorize/notauthorize.compon
     SignupuserComponent,
     VerifyemailComponent,
     NotfoundComponent,
-    NotauthorizeComponent
+    NotauthorizeComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,
