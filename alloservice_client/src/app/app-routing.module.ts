@@ -6,6 +6,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ServiceComponent } from './pages/service/service.component';
 import { SignupuserComponent } from './auth/components/signupuser/signupuser.component';
 import { SigunpworkerComponent } from './auth/components/sigunpworker/sigunpworker.component';
+import { VerifyemailComponent } from './auth/components/verifyemail/verifyemail.component';
 
 const routes: Routes = [
 
@@ -16,6 +17,8 @@ const routes: Routes = [
   {path:'services',component:ServiceComponent},
   { path: 'signup-user', component: SignupuserComponent, data: { animation: 'SignupUserPage' } },
   { path: 'signup-worker', component: SigunpworkerComponent, data: { animation: 'SignupWorkerPage' } },
+  { path: 'verify-email', component: VerifyemailComponent}
+
 ];
 
 

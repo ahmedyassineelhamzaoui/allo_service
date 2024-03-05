@@ -13,7 +13,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ServiceComponent } from './pages/service/service.component';
 import { SigunpworkerComponent } from './auth/components/sigunpworker/sigunpworker.component';
 import { SignupuserComponent } from './auth/components/signupuser/signupuser.component';
-import { VerifyemailComponent } from './auth/component/verifyemail/verifyemail.component';
+import { VerifyemailComponent } from './auth/components/verifyemail/verifyemail.component';
 
 @NgModule({
   declarations: [
