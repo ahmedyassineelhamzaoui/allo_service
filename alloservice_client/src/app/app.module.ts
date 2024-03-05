@@ -12,6 +12,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ServiceComponent } from './pages/service/service.component';
+import { SigunpworkerComponent } from './pages/sigunpworker/sigunpworker.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ServiceComponent } from './pages/service/service.component';
     HeaderComponent,
     AboutComponent,
     ContactComponent,
-    ServiceComponent
+    ServiceComponent,
+    SigunpworkerComponent
   ],
   imports: [
     BrowserModule,
