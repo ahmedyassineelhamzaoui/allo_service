@@ -22,8 +22,8 @@ const routes: Routes = [
   { path: 'signup-user', component: SignupuserComponent, data: { animation: 'SignupUserPage' } },
   { path: 'signup-worker', component: SigunpworkerComponent, data: { animation: 'SignupWorkerPage' } },
   { path: 'verify-email', component: VerifyemailComponent},
+  {path:'notauthorize',component:NotauthorizeComponent},
   {path: '**', component: NotfoundComponent, pathMatch: 'full'},
-  {path:'notauthorize',component:NotauthorizeComponent}
 
 ];
 
