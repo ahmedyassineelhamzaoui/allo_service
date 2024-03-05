@@ -5,26 +5,25 @@
     align-items: center;
     height: 80vh;
     text-align: center;
-  
-    h1 {
-      font-size: 6em;
-      margin-bottom: 1em;
-      color: #f33f3f;
-    }
-  
-    p {
-      font-size: 2em;
-      margin-bottom: 1em;
-      color: rgb(2, 41, 100);
-    }
-  
-    a {
-      font-size: 1.5em;
-      color: #f33f3f;
-      text-decoration: none;
-      cursor: pointer;
-      &:hover {
-        color: #f33f3f;
-      }
-    }
-  }
+}
+
+h1 {
+    font-size: 12em;
+    margin-bottom: 1em;
+    font-weight: bold;
+    color: #f33f3f;
+}
+
+p {
+    font-size: 2em;
+    margin-bottom: 1em;
+    color: #f33f3f;
+}
+
+.home-button{
+    color:whitesmoke;
+    padding:10px 12px;
+    background-color:#f33f3f;
+    border-radius: 10px;
+    font-size: 1.5em;
+}
