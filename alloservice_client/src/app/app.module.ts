@@ -13,6 +13,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ServiceComponent } from './pages/service/service.component';
 import { SigunpworkerComponent } from './pages/sigunpworker/sigunpworker.component';
+import { SignupuserComponent } from './pages/signupuser/signupuser.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SigunpworkerComponent } from './pages/sigunpworker/sigunpworker.compone
     AboutComponent,
     ContactComponent,
     ServiceComponent,
-    SigunpworkerComponent
+    SigunpworkerComponent,
+    SignupuserComponent
   ],
   imports: [
     BrowserModule,
