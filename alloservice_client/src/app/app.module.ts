@@ -4,7 +4,6 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/components/login/login.component';
-import { RegisterComponent } from './auth/components/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './pages/shared/footer/footer.component';
 import { HeaderComponent } from './pages/shared/header/header.component';
@@ -18,7 +17,6 @@ import { ServiceComponent } from './pages/service/service.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
     HomeComponent,
     FooterComponent,
     HeaderComponent,
@@ -37,4 +35,4 @@ import { ServiceComponent } from './pages/service/service.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
