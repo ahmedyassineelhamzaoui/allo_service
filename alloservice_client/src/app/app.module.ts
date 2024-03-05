@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { ServiceComponent } from './pages/service/service.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ContactComponent } from './pages/contact/contact.component';
     FooterComponent,
     HeaderComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    ServiceComponent
   ],
   imports: [
     BrowserModule,
