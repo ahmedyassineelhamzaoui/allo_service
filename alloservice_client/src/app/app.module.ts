@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/components/login/login.component';
@@ -12,8 +11,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ServiceComponent } from './pages/service/service.component';
-import { SigunpworkerComponent } from './pages/sigunpworker/sigunpworker.component';
-import { SignupuserComponent } from './pages/signupuser/signupuser.component';
+import { SigunpworkerComponent } from './auth/components/sigunpworker/sigunpworker.component';
+import { SignupuserComponent } from './auth/components/signupuser/signupuser.component';
 
 @NgModule({
   declarations: [
