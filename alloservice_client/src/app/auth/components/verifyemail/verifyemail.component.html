@@ -2,42 +2,50 @@
 
     <!----------------------- Main Container -------------------------->
 
-     <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
 
-    <!----------------------- Login Container -------------------------->
+        <!----------------------- Login Container -------------------------->
 
-       <div class="row border rounded-5 p-3 bg-white shadow box-area">
+        <div class="row border rounded-5 p-3 bg-white shadow box-area">
 
-    <!--------------------------- Left Box ----------------------------->
+            <!--------------------------- Left Box ----------------------------->
 
-       <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #f33f3f;">
-           <div class="featured-image mb-3">
-            <img src="assets/images/1.png" class="img-fluid" style="width: 250px;">
-           </div>
-           <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">Be Verified</p>
-           <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Please confirm your email address to gain access to your account.</small>
-       </div> 
-
-    <!-------------------- ------ Right Box ---------------------------->
-        
-       <div class="col-md-6 right-box">
-          <div class="row align-items-center">
-                <div class="header-text mb-4">
-                     <h2 class="title">Code verification</h2>
+            <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
+                style="background: #f33f3f;">
+                <p class="home_return fs-4">
+                    <i routerLink="/home" title="go home" class="fa-solid fa-left-long"></i>
+                </p>
+                <div class="featured-image mb-3">
+                    <img src="assets/images/1.png" class="img-fluid" style="width: 250px;">
                 </div>
-                <div class="input-group verification-code">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="verification code" required>
-                </div>
-                <div class="input-group mb-3">
-                    <button class="btn btn-lg w-100 fs-6 verify">verify</button>
-                </div>
-                <div class="row">
-                    <small>Already have an account? <a routerLink="/login" class="fs-6">Sign In</a></small>
-                </div>
-          </div>
-       </div> 
+                <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">Be
+                    Verified</p>
+                <small class="text-white text-wrap text-center"
+                    style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Please confirm your email
+                    address to gain access to your account.</small>
+            </div>
 
-      </div>
+            <!-------------------- ------ Right Box ---------------------------->
+
+            <div class="col-md-6 right-box">
+                <div class="row align-items-center">
+                    <div class="header-text mb-4">
+                        <h2 class="title">Code verification</h2>
+                    </div>
+                    <div class="input-group verification-code">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6"
+                            placeholder="verification code" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <button class="btn btn-lg w-100 fs-6 verify">verify</button>
+                    </div>
+                    <div class="row">
+                        <small>Already have an account? <a routerLink="/login" class="fs-6">Sign In</a></small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
 </div>
