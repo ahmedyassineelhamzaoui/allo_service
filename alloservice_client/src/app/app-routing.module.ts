@@ -14,8 +14,8 @@ const routes: Routes = [
   {path:'about',component:AboutComponent},
   {path:'contact',component:ContactComponent},
   {path:'services',component:ServiceComponent},
-  {path:'signup-worker',component:SigunpworkerComponent},
-  {path:'signup-user',component:SignupuserComponent}
+  { path: 'signup-user', component: SignupuserComponent, data: { animation: 'SignupUserPage' } },
+  { path: 'signup-worker', component: SigunpworkerComponent, data: { animation: 'SignupWorkerPage' } },
 ];
 
 
