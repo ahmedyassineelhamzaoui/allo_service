@@ -14,6 +14,7 @@ import { ServiceComponent } from './pages/service/service.component';
 import { SigunpworkerComponent } from './auth/components/sigunpworker/sigunpworker.component';
 import { SignupuserComponent } from './auth/components/signupuser/signupuser.component';
 import { VerifyemailComponent } from './auth/components/verifyemail/verifyemail.component';
+import { NotfoundComponent } from './errors/notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { VerifyemailComponent } from './auth/components/verifyemail/verifyemail.
     ServiceComponent,
     SigunpworkerComponent,
     SignupuserComponent,
-    VerifyemailComponent
+    VerifyemailComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
