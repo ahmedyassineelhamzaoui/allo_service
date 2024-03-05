@@ -12,37 +12,60 @@
 
             <div class="col-md-6 right-box">
                 <div class="row align-items-center">
-                    <div class="header-text mb-4">
-                        <h2>Hello,Again</h2>
-                        <p>We are happy to have you back.</p>
+                    <div class="header-text mb-2">
+                        <h2>Welcome To Allo Service</h2>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6"
-                            placeholder="Email address">
-                    </div>
-                    <div class="input-group mb-1">
-                        <input type="password" class="form-control form-control-lg bg-light fs-6"
-                            placeholder="Password">
-                    </div>
-                    <div class="input-group mb-5 d-flex justify-content-between">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="formCheck">
-                            <label for="formCheck" class="form-check-label text-secondary"><small>Remember
-                                    Me</small></label>
+                    <div class="row p-0 inputs">
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control  bg-light fs-6 " placeholder="First name">
                         </div>
-                        <div class="forgot">
-                            <small><a href="#">Forgot Password?</a></small>
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control  bg-light fs-6" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="row p-0 inputs">
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control  bg-light fs-6 " placeholder="Phone">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control  bg-light fs-6" placeholder="Gender">
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <button class="btn btn-lg btn-primary w-100 fs-6">Login</button>
+                        <input type="text" class="form-control  bg-light fs-6" placeholder="Email address">
+                    </div>
+                    <div class="row p-0 inputs">
+                        <div class="col-md-6 mb-3">
+                            <select class="form-select " aria-label="Default select example">
+                                <option *ngFor="let cardtype of cardtypes" [value]="cardtype.value">{{cardtype.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control  bg-light fs-6" placeholder="card number">
+                        </div>
                     </div>
                     <div class="input-group mb-3">
-                        <button class="btn btn-lg btn-light w-100 fs-6"><img src="images/google.png" style="width:20px"
-                                class="me-2"><small>Sign In with Google</small></button>
+                        <input type="file" class="form-control  bg-light fs-6" placeholder="identity document">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control  bg-light fs-6" placeholder="Password">
+                    </div>
+                    <!-- <div class="input-group mb-5 d-flex justify-content-between">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="formCheck">
+                        <label for="formCheck" class="form-check-label text-secondary"><small>Remember Me</small></label>
+                    </div>
+                    <div class="forgot">
+                        <small><a href="#">Forgot Password?</a></small>
+                    </div>
+                </div> -->
+                    <div class="input-group mb-3">
+                        <button class="btn btn-lg w-100 fs-6 signup">Sign up</button>
                     </div>
                     <div class="row">
-                        <small>Don't have account? <a href="#">Sign Up</a></small>
+                        <small>Already have an account? <a routerLink="/login" class="fs-6">Sign In</a></small>
                     </div>
                 </div>
             </div>
@@ -50,15 +73,17 @@
             <!-------------------- ------ Right Box ---------------------------->
 
             <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-                style="background: #103cbe;">
+                style="background: #f33f3f;">
                 <div class="featured-image mb-3">
-                    <img src="images/1.png" class="img-fluid" style="width: 250px;">
+                    <img src="assets/images/1.png" class="img-fluid" style="width: 250px;">
                 </div>
-                <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">Be
-                    Verified</p>
+                <p class="text-white fs-4" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">
+                    Create account as a client
+                </p>
                 <small class="text-white text-wrap text-center"
-                    style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Join experienced Designers on
+                    style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Join experienced Client on
                     this platform.</small>
+                <a routerLink="/signup-user" class="btn btn-lg fs-6 signup-user">signup as user</a>
             </div>
 
         </div>

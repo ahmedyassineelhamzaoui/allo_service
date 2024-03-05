@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class SigunpworkerComponent {
 
+  cardtypes = [
+    { value: 'PASSPORT', name: 'Passport' },
+    { value: 'IDENTITY_CARD', name: 'Identity Card' },
+    { value: 'GREYCARD', name: 'Grey Card' },    
+  ];
+  
 }
