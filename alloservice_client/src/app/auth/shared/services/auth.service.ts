@@ -33,4 +33,7 @@ export class AuthService {
             .http
             .post<CurrentUserInterface>(environment.apiUrlAuth+'verify-email',data);
   }
+  setToken(token: string): void {
+    this.token = token;
+  }
 }
