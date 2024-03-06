@@ -111,19 +111,19 @@ export const mailVerificationEffect = createEffect(
         );
     },
 
-//     { functional: true }
-// );
-// export const redirectAfterEmailEffect = createEffect(
-//     (actions$ = inject(Actions),     persistanceService = inject(PersistanceService)
-//     , router= inject(Router)) => {
-//        return actions$.pipe(
-//            ofType(verifyEmailActions.mailSuccess),
-//            tap(() => {
-//                console.log('token',persistanceService.get('accessToken'));
-//                router.navigateByUrl('/competition');
-//            })
-//        )
-//     },
-//    {functional: true,dispatch: false}
-// );
+    { functional: true }
+);
+export const redirectAfterEmailEffect = createEffect(
+    (actions$ = inject(Actions),     persistanceService = inject(PersistanceService)
+    , router= inject(Router)) => {
+       return actions$.pipe(
+           ofType(verifyEmailActions.mailSuccess),
+           tap(() => {
+               console.log('token',persistanceService.get('accessToken'));
+               router.navigateByUrl('/home');
+           })
+       )
+    },
+   {functional: true,dispatch: false}
+);
 
