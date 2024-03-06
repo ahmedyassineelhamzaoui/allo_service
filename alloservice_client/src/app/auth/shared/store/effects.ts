@@ -9,7 +9,7 @@ import { PersistanceService } from "../services/persistance.service";
 import { ResponseWithDetailsInterface } from "../types/responseWithDetails.interface";
 import { MessageService } from "../services/message.service";
 
-export const registerEffect = createEffect(
+export const registerClientEffect = createEffect(
     (actions$ = inject(Actions),
      authService = inject(AuthService),
      persistanceService = inject(PersistanceService)
@@ -32,7 +32,7 @@ export const registerEffect = createEffect(
 
     { functional: true }
 );
-export const redirectAfterRegisterEffect = createEffect(
+export const redirectAfterRegisterClientEffect = createEffect(
     (actions$ = inject(Actions), router= inject(Router),messageService = inject(MessageService)) => {
         return actions$.pipe(
             ofType(authActions.registerSuccess),

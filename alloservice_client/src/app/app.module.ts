@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,12 @@ import { VerifyemailComponent } from './auth/components/verifyemail/verifyemail.
 import { NotfoundComponent } from './errors/notfound/notfound.component';
 import { NotauthorizeComponent } from './errors/notauthorize/notauthorize.component';
 import { ForbiddenComponent } from './errors/forbidden/forbidden.component';
+import { ToastrModule } from 'ngx-toastr';
+import { StoreModule } from '@ngrx/store';
+import { authFeatureKey, authReducer } from './auth/shared/store/reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { registerClientEffect, redirectAfterRegisterClientEffect } from './auth/shared/store/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -39,6 +45,21 @@ import { ForbiddenComponent } from './errors/forbidden/forbidden.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    StoreModule.forRoot({}),
+    StoreModule.forFeature(authFeatureKey, authReducer),
+    StoreDevtoolsModule.instrument({ 
+      maxAge: 25, 
+      logOnly: !isDevMode(), 
+      autoPause: true,
+      trace: false, 
+      traceLimit: 75, 
+      connectInZone: true 
+    }),
+    EffectsModule.forRoot({
+      registerClientEffect,
+      redirectAfterRegisterClientEffect
+    })
   ],
   providers: [
     provideClientHydration(),
