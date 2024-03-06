@@ -38,7 +38,7 @@ export const redirectAfterRegisterClientEffect = createEffect(
             ofType(authActions.registerSuccess),
             tap(() => {
                 messageService.changeMessage('we sent a verification code to your mail.');
-                router.navigateByUrl('/verify-mail');
+                router.navigateByUrl('/verify-email');
             })
         )
     },
