@@ -8,6 +8,7 @@ import { AuthService } from "../services/auth.service";
 import { PersistanceService } from "../services/persistance.service";
 import { ResponseWithDetailsInterface } from "../types/responseWithDetails.interface";
 import { MessageService } from "../services/message.service";
+import { CurrentUserInterface } from "../types/currentUser.interface";
 
 export const registerClientEffect = createEffect(
     (actions$ = inject(Actions),
@@ -87,28 +88,28 @@ export const redirectAfterRegisterClientEffect = createEffect(
 //      },
 //     {functional: true,dispatch: false}
 // );
-// export const mailVerificationEffect = createEffect(
-//     (actions$ = inject(Actions),
-//      authService = inject(AuthService),
-//      persistanceService = inject(PersistanceService)
-//     ) => {
-//         return actions$.pipe(
-//             ofType(verifyEmailActions.mail),
-//             switchMap(({ request }) => {
-//                 return authService.verifyEmail(request).pipe(
-//                     map((currentUser: CurrentUserInterface) => {
-//                         persistanceService.set('accessToken', currentUser.accessToken);
-//                         authService.setToken(currentUser.accessToken); 
-//                         return verifyEmailActions.mailSuccess({ currentUser: currentUser }); 
-//                     }),
-//                     catchError((errorResponse: HttpErrorResponse) => {
-//                         console.log('errorResponse',errorResponse.error.message);
-//                         return of(verifyEmailActions.mailFailure({ errors: errorResponse.error.message }));
-//                     })
-//                 );
-//             })
-//         );
-//     },
+export const mailVerificationEffect = createEffect(
+    (actions$ = inject(Actions),
+     authService = inject(AuthService),
+     persistanceService = inject(PersistanceService)
+    ) => {
+        return actions$.pipe(
+            ofType(verifyEmailActions.mail),
+            switchMap(({ request }) => {
+                return authService.verifyEmail(request).pipe(
+                    map((currentUser: CurrentUserInterface) => {
+                        persistanceService.set('accessToken', currentUser.accessToken);
+                        authService.setToken(currentUser.accessToken); 
+                        return verifyEmailActions.mailSuccess({ currentUser: currentUser }); 
+                    }),
+                    catchError((errorResponse: HttpErrorResponse) => {
+                        console.log('errorResponse',errorResponse.error.message);
+                        return of(verifyEmailActions.mailFailure({ errors: errorResponse.error.message }));
+                    })
+                );
+            })
+        );
+    },
 
 //     { functional: true }
 // );
