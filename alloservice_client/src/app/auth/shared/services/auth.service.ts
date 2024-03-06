@@ -24,6 +24,6 @@ export class AuthService {
   registerClient(data: RegisterRequestClientInterface): Observable<ResponseWithDetailsInterface>{
     return this
             .http
-            .post<ResponseWithDetailsInterface>(environment.apiUrlAuth+'signup',data);
+            .post<ResponseWithDetailsInterface>(environment.apiUrlAuth+'signup_client',data);
   }
 }
