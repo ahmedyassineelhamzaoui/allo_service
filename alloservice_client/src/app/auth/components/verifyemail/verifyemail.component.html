@@ -36,7 +36,7 @@
                 <!-------------------- ------ Right Box ---------------------------->
 
                 <div class="col-md-6 right-box">
-                    <div class="row align-items-center">
+                    <form [formGroup]="formMailVerification" (ngSubmit)="verifyEmail()"  id="Form" class="row align-items-center">
                         <div class="header-text mb-4">
                             <h2 class="title">Code verification</h2>
                         </div>
@@ -45,12 +45,12 @@
                                 placeholder="verification code" required>
                         </div>
                         <div class="input-group mb-3">
-                            <button class="btn btn-lg w-100 fs-6 verify">verify</button>
+                            <button type="submit" class="btn btn-lg w-100 fs-6 verify">verify</button>
                         </div>
                         <div class="row">
                             <small>Already have an account? <a routerLink="/login" class="fs-6">Sign In</a></small>
                         </div>
-                    </div>
+                    </form>
                 </div>
 
             </div>
