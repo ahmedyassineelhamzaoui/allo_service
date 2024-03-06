@@ -3,7 +3,7 @@ import { combineLatest } from 'rxjs';
 import { selectIsSubmitting, selectValidationErrors } from '../../shared/store/reducer';
 import { Store } from '@ngrx/store';
 import { MessageService } from '../../shared/services/message.service';
-import { FormBuilder } from '@angular/forms'
+import { FormBuilder,Validators,FormGroup } from '@angular/forms'
 
 @Component({
   selector: 'app-verifyemail',
@@ -28,5 +28,22 @@ export class VerifyemailComponent {
     // after the component init get name frome message service
     ngOnInit() {
       this.messageService.currentMessage.subscribe((message: string) => this.message = message);
+    }
+
+    formMailVerification = this.fb.group({
+      code: ['', [Validators.required, Validators.pattern('^[0-9]{6}$')]]
+    });
+
+    getFirstError(error: any): string {
+      return error;
+    }
+    markFormControlsAsTouched(formGroup: FormGroup) {
+      Object.values(formGroup.controls).forEach(control => {
+        control.markAsTouched();
+  
+        if (control instanceof FormGroup) {
+          this.markFormControlsAsTouched(control);
+        }
+      });
     }
 }
