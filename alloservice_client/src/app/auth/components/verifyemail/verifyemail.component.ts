@@ -4,6 +4,8 @@ import { selectIsSubmitting, selectValidationErrors } from '../../shared/store/r
 import { Store } from '@ngrx/store';
 import { MessageService } from '../../shared/services/message.service';
 import { FormBuilder,Validators,FormGroup } from '@angular/forms'
+import { MailRequestInterface } from '../../shared/types/mailRequest.interface';
+import { verifyEmailActions } from '../../shared/store/action';
 
 @Component({
   selector: 'app-verifyemail',
@@ -45,5 +47,16 @@ export class VerifyemailComponent {
           this.markFormControlsAsTouched(control);
         }
       });
+    }
+    verifyEmail() {
+      this.showBackendError = true;
+      this.markFormControlsAsTouched(this.formMailVerification);
+      console.log(this.formMailVerification.getRawValue());
+      if (this.formMailVerification.valid) {
+        const request: MailRequestInterface = {
+          code: this.formMailVerification.get('code')?.value || ''
+        };
+        this.store.dispatch(verifyEmailActions.mail({ request }));
+      }
     }
 }
