@@ -8,7 +8,7 @@
             <!----------------------- Login Container -------------------------->
 
             <div class="row border rounded-5 p-3 bg-white shadow box-area">
-                <div *ngIf="showBackendError && data.backendErrors" class="alert alert-warning alert-dismissible fade show" role="alert">
+                <div *ngIf="showBackendError && data.backendErrors" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
                     <strong>Error !!</strong> {{ getFirstError(data.backendErrors) }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
