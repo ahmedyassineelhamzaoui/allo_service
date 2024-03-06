@@ -9,6 +9,11 @@ import { PersistanceService } from "../services/persistance.service";
 import { ResponseWithDetailsInterface } from "../types/responseWithDetails.interface";
 import { MessageService } from "../services/message.service";
 import { CurrentUserInterface } from "../types/currentUser.interface";
+import { ToastrService } from 'ngx-toastr';
+
+
+
+
 
 export const registerClientEffect = createEffect(
     (actions$ = inject(Actions),
@@ -114,12 +119,16 @@ export const mailVerificationEffect = createEffect(
     { functional: true }
 );
 export const redirectAfterEmailEffect = createEffect(
-    (actions$ = inject(Actions),     persistanceService = inject(PersistanceService)
-    , router= inject(Router)) => {
+    (actions$ = inject(Actions),
+    persistanceService = inject(PersistanceService),
+    router= inject(Router),
+    toastr = inject(ToastrService)
+    ) => {
        return actions$.pipe(
            ofType(verifyEmailActions.mailSuccess),
            tap(() => {
                console.log('token',persistanceService.get('accessToken'));
+               toastr.success("welcome "+persistanceService.get('firstName'));
                router.navigateByUrl('/home');
            })
        )
