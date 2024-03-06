@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { PersistanceService } from './persistance.service';
 import { RegisterRequestClientInterface } from '../types/registerRequestClient.interface';
 import { ResponseWithDetailsInterface } from '../types/responseWithDetails.interface';
+import { environment } from '../../../../environments/environment.development';
 
 
 @Injectable({
