@@ -129,7 +129,7 @@ export const redirectAfterEmailEffect = createEffect(
            switchMap(() => {
             console.log('token',persistanceService.get('accessToken'));
             return router.navigateByUrl('/home').then(() => {
-                toastr.success("welcome "+persistanceService.get('firstName'));
+                toastr.success("welcome "+persistanceService.getFirstName('firstName'));
             });
         })
        )
