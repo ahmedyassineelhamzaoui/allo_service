@@ -1,8 +1,9 @@
 import { createActionGroup, props  } from "@ngrx/store";
+import { BackendErrorInterface } from "../types/backendError.interface";
+import { ResponseWithDetailsInterface } from "../types/responseWithDetails.interface";
 import { RegisterRequestClientInterface } from "../types/registerRequestClient.interface";
 import { LoginRequestInterface } from "../types/loginRequest.interface";
 import { CurrentUserInterface } from "../types/currentUser.interface";
-import { BackendErrorInterface } from "../types/backendError.interface";
 import { MailRequestInterface } from "../types/mailRequest.interface";
 
 
@@ -14,8 +15,8 @@ export const authActions = createActionGroup({
     source : 'auth',
     events : {
         Register: props<{request: RegisterRequestClientInterface}>(),
-        'Register Success': props<{response: RegisterRequestClientInterface}>(),
-        'Register Failure': props<{errors: RegisterRequestClientInterface}>(),
+        'Register Success': props<{response: ResponseWithDetailsInterface}>(),
+        'Register Failure': props<{errors: BackendErrorInterface}>(),
     }
 })
 
