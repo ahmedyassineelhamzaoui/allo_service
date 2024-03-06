@@ -6,6 +6,7 @@ import { MessageService } from '../../shared/services/message.service';
 import { FormBuilder,Validators,FormGroup } from '@angular/forms'
 import { MailRequestInterface } from '../../shared/types/mailRequest.interface';
 import { verifyEmailActions } from '../../shared/store/action';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-verifyemail',
@@ -24,7 +25,8 @@ export class VerifyemailComponent {
   constructor(
     private store: Store,
     private fb: FormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private toastr:ToastrService
     ) { }
 
     // after the component init get name frome message service

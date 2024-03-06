@@ -23,4 +23,7 @@ export class PersistanceService {
        return null;
      }
  }
+ getFirstName(key:string):string | null{
+  return localStorage.getItem(key);
+ }
 }

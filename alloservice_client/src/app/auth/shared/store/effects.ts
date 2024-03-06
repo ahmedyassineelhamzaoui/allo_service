@@ -126,11 +126,12 @@ export const redirectAfterEmailEffect = createEffect(
     ) => {
        return actions$.pipe(
            ofType(verifyEmailActions.mailSuccess),
-           tap(() => {
-               console.log('token',persistanceService.get('accessToken'));
-               toastr.success("welcome "+persistanceService.get('firstName'));
-               router.navigateByUrl('/home');
-           })
+           switchMap(() => {
+            console.log('token',persistanceService.get('accessToken'));
+            return router.navigateByUrl('/home').then(() => {
+                toastr.success("welcome "+persistanceService.get('firstName'));
+            });
+        })
        )
     },
    {functional: true,dispatch: false}
