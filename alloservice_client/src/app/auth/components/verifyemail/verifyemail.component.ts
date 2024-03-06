@@ -51,8 +51,8 @@ export class VerifyemailComponent {
     verifyEmail() {
       this.showBackendError = true;
       this.markFormControlsAsTouched(this.formMailVerification);
-      console.log(this.formMailVerification.getRawValue());
       if (this.formMailVerification.valid) {
+        console.log(this.formMailVerification.getRawValue());
         const request: MailRequestInterface = {
           code: this.formMailVerification.get('code')?.value || ''
         };

@@ -48,7 +48,7 @@
                                 </strong>
                         </div>
                         <div class="input-group mb-3">
-                            <button type="submit" class="btn btn-lg w-100 fs-6 verify">verify</button>
+                            <button type="submit" [disabled]="data.isSubmiting" class="btn btn-lg w-100 fs-6 verify">verify</button>
                         </div>
                         <div class="row">
                             <small>Already have an account? <a routerLink="/login" class="fs-6">Sign In</a></small>
