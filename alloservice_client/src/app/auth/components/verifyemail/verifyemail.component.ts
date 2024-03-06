@@ -24,4 +24,9 @@ export class VerifyemailComponent {
     private fb: FormBuilder,
     private messageService: MessageService
     ) { }
+
+    // after the component init get name frome message service
+    ngOnInit() {
+      this.messageService.currentMessage.subscribe((message: string) => this.message = message);
+    }
 }
