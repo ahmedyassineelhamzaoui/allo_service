@@ -24,6 +24,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { registerClientEffect, redirectAfterRegisterClientEffect } from './auth/shared/store/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     FormsModule,
     ToastrModule.forRoot(),
     StoreModule.forRoot({}),
