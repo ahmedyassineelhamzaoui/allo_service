@@ -5,6 +5,8 @@ import { PersistanceService } from './persistance.service';
 import { RegisterRequestClientInterface } from '../types/registerRequestClient.interface';
 import { ResponseWithDetailsInterface } from '../types/responseWithDetails.interface';
 import { environment } from '../../../../environments/environment.development';
+import { MailRequestInterface } from '../types/mailRequest.interface';
+import { CurrentUserInterface } from '../types/currentUser.interface';
 
 
 @Injectable({
@@ -25,5 +27,10 @@ export class AuthService {
     return this
             .http
             .post<ResponseWithDetailsInterface>(environment.apiUrlAuth+'signup_client',data);
+  }
+  verifyEmail(data: MailRequestInterface): Observable<CurrentUserInterface>{
+    return this
+            .http
+            .post<CurrentUserInterface>(environment.apiUrlAuth+'verify-email',data);
   }
 }
