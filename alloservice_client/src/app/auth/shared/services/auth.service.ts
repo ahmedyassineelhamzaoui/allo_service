@@ -36,4 +36,7 @@ export class AuthService {
   setToken(token: string): void {
     this.token = token;
   }
+  isTokenValid(): Observable<boolean> {
+    return this.http.post<boolean>(this.validationUrl, { token: this.token });
+  }
 }
