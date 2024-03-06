@@ -23,6 +23,7 @@ import { authFeatureKey, authReducer } from './auth/shared/store/reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { registerClientEffect, redirectAfterRegisterClientEffect } from './auth/shared/store/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
     ToastrModule.forRoot(),
     StoreModule.forRoot({}),
     StoreModule.forFeature(authFeatureKey, authReducer),
