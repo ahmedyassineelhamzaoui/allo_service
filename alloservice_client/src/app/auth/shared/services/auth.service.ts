@@ -39,4 +39,12 @@ export class AuthService {
   isTokenValid(): Observable<boolean> {
     return this.http.post<boolean>(this.validationUrl, { token: this.token });
   }
+  isUserAuthenticated(): boolean {
+    const token = this.persistanceService.get('accessToken');
+    if (token) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
