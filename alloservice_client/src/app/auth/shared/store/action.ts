@@ -5,6 +5,7 @@ import { RegisterRequestClientInterface } from "../types/registerRequestClient.i
 import { LoginRequestInterface } from "../types/loginRequest.interface";
 import { CurrentUserInterface } from "../types/currentUser.interface";
 import { MailRequestInterface } from "../types/mailRequest.interface";
+import { RegisterRequestWorkerInterface } from "../types/registerRequestWorker.interface";
 
 
 

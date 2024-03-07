@@ -1,4 +1,4 @@
-export interface RegisterRequestClientInterface{
+export interface RegisterRequestWorkerInterface{
     firstName : string;
     lastName : string;
     phone: string;
