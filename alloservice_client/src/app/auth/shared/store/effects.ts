@@ -50,6 +50,43 @@ export const redirectAfterRegisterClientEffect = createEffect(
     },
     {functional: true,dispatch: false}
 );
+
+
+export const registerWorkerEffect = createEffect(
+    (actions$ = inject(Actions),
+     authService = inject(AuthService),
+     persistanceService = inject(PersistanceService)
+    ) => {
+        return actions$.pipe(
+            ofType(authActions.register),
+            switchMap(({ request }) => {
+                return authService.registerClient(request).pipe(
+                    map((response: ResponseWithDetailsInterface) => {
+                        return authActions.registerSuccess({ response: response }); 
+                    }),
+                    catchError((errorResponse: HttpErrorResponse) => {
+                        console.log('errorResponse',errorResponse.error.details);
+                        return of(authActions.registerFailure({ errors: errorResponse.error.details }));
+                    })
+                );
+            })
+        );
+    },
+
+    { functional: true }
+);
+export const redirectAfterRegisterWorkerEffect = createEffect(
+    (actions$ = inject(Actions), router= inject(Router),messageService = inject(MessageService)) => {
+        return actions$.pipe(
+            ofType(authActions.registerSuccess),
+            tap(() => {
+                messageService.changeMessage('we sent a verification code to your mail.');
+                router.navigateByUrl('/verify-email');
+            })
+        )
+    },
+    {functional: true,dispatch: false}
+);
 // export const loginEffect = createEffect(
 //     (actions$ = inject(Actions),
 //      authService = inject(AuthService),
