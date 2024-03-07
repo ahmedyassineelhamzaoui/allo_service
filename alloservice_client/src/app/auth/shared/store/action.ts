@@ -20,6 +20,16 @@ export const authActions = createActionGroup({
     }
 })
 
+export const authWorkerActions = createActionGroup({
+
+    source : 'authworker',
+    events : {
+        Register: props<{request: RegisterRequestWorkerInterface}>(),
+        'Register Success': props<{response: ResponseWithDetailsInterface}>(),
+        'Register Failure': props<{errors: BackendErrorInterface}>(),
+    }
+})
+
 export const loginActions = createActionGroup({
     source: 'login',
     events :{

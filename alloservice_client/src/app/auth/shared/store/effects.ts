@@ -1,7 +1,7 @@
 import { inject } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, of, switchMap, tap } from "rxjs";
-import { authActions, loginActions, verifyEmailActions } from "./action";
+import { authActions, authWorkerActions, loginActions, verifyEmailActions } from "./action";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { AuthService } from "../services/auth.service";
@@ -58,15 +58,15 @@ export const registerWorkerEffect = createEffect(
      persistanceService = inject(PersistanceService)
     ) => {
         return actions$.pipe(
-            ofType(authActions.register),
+            ofType(authWorkerActions.register),
             switchMap(({ request }) => {
                 return authService.registerClient(request).pipe(
                     map((response: ResponseWithDetailsInterface) => {
-                        return authActions.registerSuccess({ response: response }); 
+                        return authWorkerActions.registerSuccess({ response: response }); 
                     }),
                     catchError((errorResponse: HttpErrorResponse) => {
                         console.log('errorResponse',errorResponse.error.details);
-                        return of(authActions.registerFailure({ errors: errorResponse.error.details }));
+                        return of(authWorkerActions.registerFailure({ errors: errorResponse.error.details }));
                     })
                 );
             })
@@ -78,7 +78,7 @@ export const registerWorkerEffect = createEffect(
 export const redirectAfterRegisterWorkerEffect = createEffect(
     (actions$ = inject(Actions), router= inject(Router),messageService = inject(MessageService)) => {
         return actions$.pipe(
-            ofType(authActions.registerSuccess),
+            ofType(authWorkerActions.registerSuccess),
             tap(() => {
                 messageService.changeMessage('we sent a verification code to your mail.');
                 router.navigateByUrl('/verify-email');
