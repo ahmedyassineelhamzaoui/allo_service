@@ -49,8 +49,16 @@
                         <input type="file" class="form-control  bg-light fs-6" placeholder="identity document">
                     </div>
 
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control  bg-light fs-6" placeholder="Password">
+                    <div class="row inputs p-0">
+                        <div class="col-md-6 mb-3">
+                            <input type="password" class="form-control  bg-light fs-6" placeholder="Password">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select class="form-select  " aria-label="Default select example">
+                                <option *ngFor="let city of cities" [value]="city.value">{{city.name}}
+                                </option>
+                            </select>
+                        </div>
                     </div>
                     <!-- <div class="input-group mb-5 d-flex justify-content-between">
                     <div class="form-check">
@@ -74,7 +82,7 @@
 
             <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
                 style="background: #f33f3f;">
-                <p class="home_return fs-4" >
+                <p class="home_return fs-4">
                     <i routerLink="/home" title="go home" class="fa-solid fa-right-long"></i>
                 </p>
                 <div class="featured-image mb-3">
