@@ -11,50 +11,62 @@
             <!--------------------------- Left Box ----------------------------->
 
             <div class="col-md-6 right-box">
-                <div class="row align-items-center">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" id="form" class="row align-items-center">
                     <div class="header-text mb-2">
                         <h2>Welcome To Allo Service</h2>
                     </div>
                     <div class="row p-0 inputs">
                         <div class="col-md-6 mb-3">
-                            <input type="text" class="form-control  bg-light fs-6 " placeholder="First name">
+                            <input formControlName="firstName" type="text" class="form-control  bg-light fs-6 "
+                                placeholder="First name">
                         </div>
                         <div class="col-md-6 mb-3">
-                            <input type="text" class="form-control  bg-light fs-6" placeholder="Last Name">
+                            <input formControlName="lastName" type="text" class="form-control  bg-light fs-6"
+                                placeholder="Last Name">
                         </div>
                     </div>
                     <div class="row p-0 inputs">
                         <div class="col-md-6 mb-3">
-                            <input type="text" class="form-control  bg-light fs-6 " placeholder="Phone">
+                            <input formControlName="phone" type="text" class="form-control  bg-light fs-6 "
+                                placeholder="Phone">
                         </div>
                         <div class="col-md-6 mb-3">
-                            <input type="text" class="form-control  bg-light fs-6" placeholder="Gender">
+                            <select class="form-select " formControlName="gender" aria-label="Default select example">
+                                <option *ngFor="let gender of genders" [value]="gender.value">
+                                    {{gender.name}}
+                                </option>
+                            </select>
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control  bg-light fs-6" placeholder="Email address">
+                        <input type="text" formControlName="email" class="form-control  bg-light fs-6"
+                            placeholder="Email address">
                     </div>
                     <div class="row p-0 inputs">
                         <div class="col-md-6 mb-3">
-                            <select class="form-select " aria-label="Default select example">
+                            <select class="form-select " formControlName="cardType" aria-label="Default select example">
                                 <option *ngFor="let cardtype of cardtypes" [value]="cardtype.value">{{cardtype.name}}
                                 </option>
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <input type="text" class="form-control  bg-light fs-6" placeholder="card number">
+                            <input type="text" formControlName="cardNumber" class="form-control  bg-light fs-6"
+                                placeholder="card number">
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="file" class="form-control  bg-light fs-6" placeholder="identity document">
+                        <input type="file" formControlName="cardDocument" class="form-control  bg-light fs-6"
+                            placeholder="identity document">
                     </div>
 
                     <div class="row inputs p-0">
                         <div class="col-md-6 mb-3">
-                            <input type="password" class="form-control  bg-light fs-6" placeholder="Password">
+                            <input type="password" formControlName="password" class="form-control  bg-light fs-6"
+                                placeholder="Password">
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select class="form-select  " aria-label="Default select example">
+                            <select formControlName="location" class="form-select  "
+                                aria-label="Default select example">
                                 <option *ngFor="let city of cities" [value]="city.value">{{city.name}}
                                 </option>
                             </select>
@@ -75,7 +87,7 @@
                     <div class="row">
                         <small>Already have an account? <a routerLink="/login" class="fs-6">Sign In</a></small>
                     </div>
-                </div>
+                </form>
             </div>
 
             <!-------------------- ------ Right Box ---------------------------->
