@@ -7,6 +7,7 @@ import { ResponseWithDetailsInterface } from '../types/responseWithDetails.inter
 import { environment } from '../../../../environments/environment.development';
 import { MailRequestInterface } from '../types/mailRequest.interface';
 import { CurrentUserInterface } from '../types/currentUser.interface';
+import { RegisterRequestWorkerInterface } from '../types/registerRequestWorker.interface';
 
 
 @Injectable({
@@ -27,6 +28,11 @@ export class AuthService {
     return this
             .http
             .post<ResponseWithDetailsInterface>(environment.apiUrlAuth+'signup_client',data);
+  }
+  registerWorker(data: RegisterRequestWorkerInterface): Observable<ResponseWithDetailsInterface>{
+    return this
+            .http
+            .post<ResponseWithDetailsInterface>(environment.apiUrlAuth+'signup_worker',data)
   }
   verifyEmail(data: MailRequestInterface): Observable<CurrentUserInterface>{
     return this

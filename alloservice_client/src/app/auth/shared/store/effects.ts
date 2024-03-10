@@ -60,7 +60,7 @@ export const registerWorkerEffect = createEffect(
         return actions$.pipe(
             ofType(authWorkerActions.register),
             switchMap(({ request }) => {
-                return authService.registerClient(request).pipe(
+                return authService.registerWorker(request).pipe(
                     map((response: ResponseWithDetailsInterface) => {
                         return authWorkerActions.registerSuccess({ response: response }); 
                     }),
