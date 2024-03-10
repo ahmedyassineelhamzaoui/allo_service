@@ -1,5 +1,5 @@
 import { createFeature, createReducer, on } from "@ngrx/store";
-import { authActions, loginActions,verifyEmailActions } from "./action";
+import { authActions, authWorkerActions, loginActions,verifyEmailActions } from "./action";
 import { AuthStateInterface } from "../types/aurhState.interface";
 
 const initialState : AuthStateInterface = {
@@ -22,6 +22,17 @@ const authFeature = createFeature({
         on(authActions.registerFailure, (state,action) => ({
             ...state,isSubmitting: false,
             validationErrors: action.errors
+        })),
+        on(authWorkerActions.register,(state) => ({
+            ...state,isSubmitting:true,validationErrors:null
+        })),
+        on(authWorkerActions.registerSuccess,(state,action) => ({
+            ...state,isSubmitting:false,
+            response:action.response
+        })),
+        on(authWorkerActions.registerFailure,(state,action) => ({
+            ...state,isSubmitting:false,
+            validationErrors:action.errors
         })),
         on(loginActions.login, (state) => ({
             ...state, isSubmitting: true, validationErrors: null

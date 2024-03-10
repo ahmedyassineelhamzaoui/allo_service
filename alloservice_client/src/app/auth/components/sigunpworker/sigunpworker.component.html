@@ -49,12 +49,12 @@
                         </div>
                     </div>
                     <div class="input-group mt-3">
-                        <input  formControlName="email" type="text" class="form-control  bg-light fs-6"
+                        <input  formControlName="email" type="email" class="form-control  bg-light fs-6"
                             placeholder="Email address">
-                            <strong class="text-danger" *ngIf="form.get('email')?.invalid  && form.get('email')?.touched">
-                                invalid email 
-                            </strong>
                     </div>
+                    <strong class="text-danger" *ngIf="form.get('email')?.invalid  && form.get('email')?.touched">
+                        invalid email 
+                    </strong>
                     <div class="row p-0 inputs">
                         <div class="col-md-6 mt-3">
                             <select  formControlName="cardType" class="form-select " aria-label="Default select example">
