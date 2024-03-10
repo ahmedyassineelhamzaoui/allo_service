@@ -21,7 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { StoreModule } from '@ngrx/store';
 import { authFeatureKey, authReducer } from './auth/shared/store/reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { registerClientEffect, redirectAfterRegisterClientEffect,redirectAfterEmailEffect,mailVerificationEffect } from './auth/shared/store/effects';
+import { registerClientEffect, redirectAfterRegisterClientEffect,redirectAfterEmailEffect,mailVerificationEffect,registerWorkerEffect,redirectAfterRegisterWorkerEffect } from './auth/shared/store/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -65,7 +65,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
       registerClientEffect,
       redirectAfterRegisterClientEffect,
       mailVerificationEffect,
-      redirectAfterEmailEffect
+      redirectAfterEmailEffect,
+      registerWorkerEffect,
+      redirectAfterRegisterWorkerEffect
     })
   ],
   providers: [
