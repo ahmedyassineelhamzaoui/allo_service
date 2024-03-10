@@ -24,8 +24,10 @@ export class SigunpworkerComponent {
     phone: ['', [Validators.required, Validators.minLength(10)]],
     gender: ['MALE'],
     cardType: ['PASSPORT'],
-    location: ['CASABLANCA'],
+    location: ['Casablanca'],
     email: ['', [Validators.required, Validators.email]],
+    cardNumber: ['',[Validators.required,Validators.minLength(4)]],
+    cardDocument:[''],
     password: ['', [Validators.required, Validators.minLength(8)]]
   });
 

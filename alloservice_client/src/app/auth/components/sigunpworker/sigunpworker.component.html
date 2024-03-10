@@ -16,55 +16,74 @@
                         <h2>Welcome To Allo Service</h2>
                     </div>
                     <div class="row p-0 inputs">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-6">
                             <input formControlName="firstName" type="text" class="form-control  bg-light fs-6 "
                                 placeholder="First name">
+                                <strong class="text-danger" *ngIf="form.get('firstName')?.invalid && form.get('firstName')?.touched">
+                                    invalid first name
+                                </strong>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-6">
                             <input formControlName="lastName" type="text" class="form-control  bg-light fs-6"
                                 placeholder="Last Name">
+                                <strong class="text-danger" *ngIf="form.get('lastName')?.invalid && form.get('lastName')?.touched">
+                                    invalid last name
+                                </strong>
                         </div>
                     </div>
+                    
                     <div class="row p-0 inputs">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-6 mt-3">
                             <input formControlName="phone" type="text" class="form-control  bg-light fs-6 "
                                 placeholder="Phone">
+                                <strong class="text-danger" *ngIf="form.get('phone')?.invalid  && form.get('phone')?.touched">
+                                    invalid phone number
+                                </strong>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <select class="form-select " formControlName="gender" aria-label="Default select example">
+                        <div class="col-md-6 mt-3">
+                            <select  formControlName="gender" class="form-select " aria-label="Default select example">
                                 <option *ngFor="let gender of genders" [value]="gender.value">
                                     {{gender.name}}
                                 </option>
                             </select>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="text" formControlName="email" class="form-control  bg-light fs-6"
+                    <div class="input-group mt-3">
+                        <input  formControlName="email" type="text" class="form-control  bg-light fs-6"
                             placeholder="Email address">
+                            <strong class="text-danger" *ngIf="form.get('email')?.invalid  && form.get('email')?.touched">
+                                invalid email 
+                            </strong>
                     </div>
                     <div class="row p-0 inputs">
-                        <div class="col-md-6 mb-3">
-                            <select class="form-select " formControlName="cardType" aria-label="Default select example">
+                        <div class="col-md-6 mt-3">
+                            <select  formControlName="cardType" class="form-select " aria-label="Default select example">
                                 <option *ngFor="let cardtype of cardtypes" [value]="cardtype.value">{{cardtype.name}}
                                 </option>
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <input type="text" formControlName="cardNumber" class="form-control  bg-light fs-6"
+                        <div class="col-md-6 mt-3">
+                            <input  formControlName="cardNumber" type="text" class="form-control  bg-light fs-6"
                                 placeholder="card number">
+                                <strong class="text-danger" *ngIf="form.get('cardNumber')?.invalid && form.get('cardNumber')?.touched">
+                                inalid card number 
+                                </strong>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="file" formControlName="cardDocument" class="form-control  bg-light fs-6"
+                    <div class="input-group mt-3">
+                        <input formControlName="cardDocument" type="file"  class="form-control  bg-light fs-6"
                             placeholder="identity document">
                     </div>
 
                     <div class="row inputs p-0">
-                        <div class="col-md-6 mb-3">
-                            <input type="password" formControlName="password" class="form-control  bg-light fs-6"
+                        <div class="col-md-6 mt-3">
+                            <input  formControlName="password" type="password" class="form-control  bg-light fs-6"
                                 placeholder="Password">
+                                <strong class="text-danger" *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+                                    invalid password
+                                </strong>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-6 mt-3">
                             <select formControlName="location" class="form-select  "
                                 aria-label="Default select example">
                                 <option *ngFor="let city of cities" [value]="city.value">{{city.name}}
@@ -72,17 +91,8 @@
                             </select>
                         </div>
                     </div>
-                    <!-- <div class="input-group mb-5 d-flex justify-content-between">
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="formCheck">
-                        <label for="formCheck" class="form-check-label text-secondary"><small>Remember Me</small></label>
-                    </div>
-                    <div class="forgot">
-                        <small><a href="#">Forgot Password?</a></small>
-                    </div>
-                </div> -->
-                    <div class="input-group mb-3">
-                        <button class="btn btn-lg w-100 fs-6 signup">Sign up</button>
+                    <div class="input-group mt-3 mb-2">
+                        <button type="submit" class="btn btn-lg w-100 fs-6 signup">Sign up</button>
                     </div>
                     <div class="row">
                         <small>Already have an account? <a routerLink="/login" class="fs-6">Sign In</a></small>
