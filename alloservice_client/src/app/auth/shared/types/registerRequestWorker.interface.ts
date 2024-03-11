@@ -4,7 +4,7 @@ export interface RegisterRequestWorkerInterface{
     phone: string;
     gender: string;
     location:string;
-    cardDocument: string;
+    file: string;
     cardType:string;
     cardNumber:string;
     email : string;

@@ -27,7 +27,7 @@ export class SigunpworkerComponent {
     location: ['Casablanca'],
     email: ['', [Validators.required, Validators.email]],
     cardNumber: ['',[Validators.required,Validators.minLength(4)]],
-    cardDocument:[''],
+    file:[''],
     password: ['', [Validators.required, Validators.minLength(8)]]
   });
 
@@ -79,7 +79,7 @@ export class SigunpworkerComponent {
         location: this.form.get('location')?.value || '',
         gender: this.form.get('gender')?.value || '',
         cardType: this.form.get('cardType')?.value || '',
-        cardDocument: this.form.get('cardDocument')?.value || '',
+        file: this.form.get('file')?.value || '',
         cardNumber: this.form.get('cardNumber')?.value || ''
       };
       this.store.dispatch(authWorkerActions.register({ request }));
@@ -97,6 +97,7 @@ export class SigunpworkerComponent {
       if (control instanceof FormGroup) {
         this.markFormControlsAsTouched(control);
       }
+      
     });
   }
 }
