@@ -141,6 +141,7 @@ export const mailVerificationEffect = createEffect(
                 return authService.verifyEmail(request).pipe(
                     map((currentUser: CurrentUserInterface) => {
                         persistanceService.set('accessToken', currentUser.accessToken);
+                        persistanceService.set('name', currentUser.firstName);
                         authService.setToken(currentUser.accessToken); 
                         return verifyEmailActions.mailSuccess({ currentUser: currentUser }); 
                     }),
@@ -164,9 +165,8 @@ export const redirectAfterEmailEffect = createEffect(
        return actions$.pipe(
            ofType(verifyEmailActions.mailSuccess),
            switchMap(() => {
-            console.log('token',persistanceService.get('accessToken'));
             return router.navigateByUrl('/home').then(() => {
-                toastr.success("welcome "+persistanceService.getFirstName('firstName'));
+                toastr.success("welcome "+persistanceService.getUsername('name'));
             });
         })
        )

@@ -7,8 +7,8 @@ import { ResponseWithDetailsInterface } from '../types/responseWithDetails.inter
 import { environment } from '../../../../environments/environment.development';
 import { MailRequestInterface } from '../types/mailRequest.interface';
 import { CurrentUserInterface } from '../types/currentUser.interface';
+import { HttpHeaders } from '@angular/common/http';
 import { RegisterRequestWorkerInterface } from '../types/registerRequestWorker.interface';
-
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class AuthService {
   registerWorker(data: RegisterRequestWorkerInterface): Observable<ResponseWithDetailsInterface>{
     return this
             .http
-            .post<ResponseWithDetailsInterface>(environment.apiUrlAuth+'signup_worker',data)
+            .post<ResponseWithDetailsInterface>(environment.apiUrlAuth+'signup_worker',data);
   }
   verifyEmail(data: MailRequestInterface): Observable<CurrentUserInterface>{
     return this

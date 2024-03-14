@@ -17,7 +17,7 @@
 
             
             <div class="col-md-6 right-box">
-                <form [formGroup]="form" (ngSubmit)="onSubmit()" id="form" class="row align-items-center">
+                <form [formGroup]="form"  (ngSubmit)="onSubmit()" enctype="multipart/form-data"  id="form" class="row align-items-center">
                     <div class="header-text mb-2">
                         <h2>Welcome To Allo Service</h2>
                     </div>
@@ -76,11 +76,6 @@
                                 </strong>
                         </div>
                     </div>
-                    <div class="input-group mt-3">
-                        <input formControlName="file" type="file"  class="form-control  bg-light fs-6"
-                            placeholder="identity document">
-                    </div>
-
                     <div class="row inputs p-0">
                         <div class="col-md-6 mt-3">
                             <input  formControlName="password" type="password" class="form-control  bg-light fs-6"
@@ -98,7 +93,7 @@
                         </div>
                     </div>
                     <div class="input-group mt-3 mb-2">
-                        <button type="submit" class="btn btn-lg w-100 fs-6 signup">Sign up</button>
+                        <button [disabled]="data.isSubmiting" type="submit" class="btn btn-lg w-100 fs-6 signup">Sign up</button>
                     </div>
                     <div class="row">
                         <small>Already have an account? <a routerLink="/login" class="fs-6">Sign In</a></small>

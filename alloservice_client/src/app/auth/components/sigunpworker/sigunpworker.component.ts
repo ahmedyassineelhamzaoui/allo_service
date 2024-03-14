@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { authWorkerActions } from '../../shared/store/action';
 import { RegisterRequestWorkerInterface } from '../../shared/types/registerRequestWorker.interface';
+import { redirectAfterRegisterWorkerEffect } from '../../shared/store/effects';
 
 @Component({
   selector: 'app-sigunpworker',
@@ -27,13 +28,13 @@ export class SigunpworkerComponent {
     location: ['Casablanca'],
     email: ['', [Validators.required, Validators.email]],
     cardNumber: ['',[Validators.required,Validators.minLength(4)]],
-    file:[''],
     password: ['', [Validators.required, Validators.minLength(8)]]
   });
 
   constructor(
     private fb: FormBuilder,
     private store: Store) { }
+
   cardtypes = [
     { value: 'PASSPORT', name: 'Passport' },
     { value: 'IDENTITY_CARD', name: 'Identity Card' },
@@ -67,6 +68,8 @@ export class SigunpworkerComponent {
   ]
 
   onSubmit() {
+
+
     this.showBackendError = true;
     this.markFormControlsAsTouched(this.form);
     if (this.form.valid) {
@@ -79,9 +82,9 @@ export class SigunpworkerComponent {
         location: this.form.get('location')?.value || '',
         gender: this.form.get('gender')?.value || '',
         cardType: this.form.get('cardType')?.value || '',
-        file: this.form.get('file')?.value || '',
         cardNumber: this.form.get('cardNumber')?.value || ''
       };
+      
       this.store.dispatch(authWorkerActions.register({ request }));
     }
   }

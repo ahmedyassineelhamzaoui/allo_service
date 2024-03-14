@@ -23,7 +23,8 @@ export class PersistanceService {
        return null;
      }
  }
- getFirstName(key:string):string | null{
-  return localStorage.getItem(key);
+ getUsername(key:string):string | null{
+  const localStorageItem = localStorage.getItem(key);
+  return localStorageItem ? JSON.parse(localStorageItem) : null;
  }
 }
