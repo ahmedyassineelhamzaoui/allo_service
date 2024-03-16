@@ -68,6 +68,18 @@ export class UsersComponent {
     
   }
 
+  deleteUser(id:string) {
+    this.userService.deleteUser(id).subscribe(
+      (response) => {
+        this.users = [];
+        this.getAllUsers();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  
   hasRole(role: string): boolean {
     return this.sharedService.getRoles().some(r => r.role === role);
   }
