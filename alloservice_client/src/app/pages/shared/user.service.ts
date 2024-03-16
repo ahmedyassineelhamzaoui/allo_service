@@ -30,4 +30,8 @@ export class UserService {
     return this
             .http.put<ResponseWithDetailsInterface>(environment.apiURL+'updateuser',data);
   }
+  deleteUser(id:string): Observable<ResponseWithDetailsInterface>{
+    return this
+            .http.delete<ResponseWithDetailsInterface>(environment.apiURL+'deleteuser/'+id);
+  }
 }
