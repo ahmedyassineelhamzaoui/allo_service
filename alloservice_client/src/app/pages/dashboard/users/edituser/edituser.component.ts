@@ -2,6 +2,7 @@ import { Component,Inject } from '@angular/core';
 import { UserService } from '../../../shared/user.service';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { EdituserRequestInterface } from '../../../shared/types/edituserRequest.interface';
 
 @Component({
   selector: 'app-edituser',
@@ -38,7 +39,23 @@ export class EdituserComponent {
     this.dialogRef.close();
   }
   editUser() {
-    this.errorMessage = '';
-    this.successMessage = '';
+
+    const request : EdituserRequestInterface = {
+      status: this.form.get('status')?.value || 'ACTIVE'
+    }
+    this.userService.updateUser(request).subscribe(
+      (response) => {
+        this.errorMessage = '';
+        this.successMessage = "accound status has been updated successfully";
+      },
+      (error) => {
+        this.successMessage = '';
+        this.errorMessage = this.getFirstError(error.error.details);
+      }
+    );
+  }
+  getFirstError(errors: any): string {
+    const firstKey = Object.keys(errors)[0];
+    return errors[firstKey];
   }
 }
