@@ -1,4 +1,4 @@
-<div id="save-member-container">
+<div id="edit-user-container">
 
     <form [formGroup]="form"  (ngSubmit)="editUser()" id="edit-user-form">
         <!-- @if(errorMessage){
@@ -34,12 +34,13 @@
         </div>
         <div class="mt-3">
             <div>
-                <label for="identityDocumentType"
-                    class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-400">Identity Document
-                    Type</label>
-                <select id="identityDocumentType" formControlName="status"
+                <label for="status"
+                    class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                    status
+                </label>
+                <select id="status" formControlName="status"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option *ngFor="let role of roles" [value]="role.value" >{{role.name}}</option>
+                    <option *ngFor="let status of statues" [value]="status.value" >{{status.name}}</option>
                 </select>
             </div>
         </div>

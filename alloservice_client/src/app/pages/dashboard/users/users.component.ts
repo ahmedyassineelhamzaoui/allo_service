@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component,Inject } from '@angular/core';
 import { UserService } from '../../shared/user.service';
 import { PageEvent } from '@angular/material/paginator';
 import { AdduserComponent } from './adduser/adduser.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SharedService } from '../../shared/shared.service';
+import { EdituserComponent } from './edituser/edituser.component';
 
 @Component({
   selector: 'app-users',
@@ -53,7 +54,19 @@ export class UsersComponent {
     this.currentPageIndex = pageEvent.pageIndex;
     this.pageSize = pageEvent.pageSize;
   }
-  
+  openEditModal(status:any) {
+    const dialogRef = this.dialog.open(EdituserComponent,{
+      data: {
+        status: status
+      }
+    });
+    dialogRef.afterClosed().subscribe(()=>{
+       this.users = [];
+       this.getAllUsers();
+    });
+    
+  }
+
   hasRole(role: string): boolean {
     return this.sharedService.getRoles().some(r => r.role === role);
   }
