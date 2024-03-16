@@ -21,8 +21,12 @@ export class UserService {
             .get<ResponseWithDetailsInterface>(environment.apiURL+'users');
   }
 
-  addUser(user:UserRequestInterface): Observable<string>{
+  addUser(user:UserRequestInterface): Observable<ResponseWithDetailsInterface>{
     return this
-            .http.post<string>(environment.apiURL+'adduser',user);
+            .http.post<ResponseWithDetailsInterface>(environment.apiURL+'adduser',user);
+  }
+  updateUser(user:UserRequestInterface): Observable<string>{
+    return this
+            .http.put<string>(environment.apiURL+'updateuser',user);
   }
 }
