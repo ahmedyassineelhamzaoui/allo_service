@@ -50,6 +50,7 @@ export class EdituserComponent {
         this.successMessage = "accound status has been updated successfully";
       },
       (error) => {
+        console.log(error);
         this.successMessage = '';
         this.errorMessage = this.getFirstError(error.error.details);
       }
