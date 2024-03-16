@@ -1,4 +1,5 @@
 export interface UserRequestInterface {
+    
     firstName : string;
     lastName : string;
     email : string;

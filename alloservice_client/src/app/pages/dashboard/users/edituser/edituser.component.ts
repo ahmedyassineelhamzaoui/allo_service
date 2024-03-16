@@ -26,7 +26,7 @@ export class EdituserComponent {
     private userService: UserService,
     private dialogRef: MatDialogRef<EdituserComponent>,
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: { status: string },
+    @Inject(MAT_DIALOG_DATA) public data: { status: string, id: string},
   ) { 
     this.form = this.fb.group({
       status: [this.data.status]
@@ -41,6 +41,7 @@ export class EdituserComponent {
   editUser() {
 
     const request : EdituserRequestInterface = {
+      id: this.data.id,
       status: this.form.get('status')?.value || 'ACTIVE'
     }
     this.userService.updateUser(request).subscribe(

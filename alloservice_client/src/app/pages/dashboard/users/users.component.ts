@@ -54,10 +54,11 @@ export class UsersComponent {
     this.currentPageIndex = pageEvent.pageIndex;
     this.pageSize = pageEvent.pageSize;
   }
-  openEditModal(status:any) {
+  openEditModal(status:string,id:string) {
     const dialogRef = this.dialog.open(EdituserComponent,{
       data: {
-        status: status
+        status: status,
+        id:id
       }
     });
     dialogRef.afterClosed().subscribe(()=>{
