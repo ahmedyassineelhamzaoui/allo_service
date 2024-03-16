@@ -3,6 +3,7 @@ import { UserService } from '../../shared/user.service';
 import { PageEvent } from '@angular/material/paginator';
 import { AdduserComponent } from './adduser/adduser.component';
 import { MatDialog } from '@angular/material/dialog';
+import { SharedService } from '../../shared/shared.service';
 
 @Component({
   selector: 'app-users',
@@ -11,7 +12,11 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class UsersComponent {
 
-  constructor(private userService: UserService,private dialog:MatDialog) { }
+  constructor(
+    private userService: UserService,
+    private dialog:MatDialog,
+    private sharedService: SharedService
+    ) { }
  
   isLoading:boolean = false;
   errorMessage:string = '';
@@ -47,5 +52,13 @@ export class UsersComponent {
   handlePageEvent(pageEvent: PageEvent) {
     this.currentPageIndex = pageEvent.pageIndex;
     this.pageSize = pageEvent.pageSize;
+  }
+  
+  hasRole(role: string): boolean {
+    return this.sharedService.getRoles().some(r => r.role === role);
+  }
+
+  hasPermission(permission: string): boolean {
+    return this.sharedService.getRoles().some(r => r.permissions.includes(permission));
   }
 }
