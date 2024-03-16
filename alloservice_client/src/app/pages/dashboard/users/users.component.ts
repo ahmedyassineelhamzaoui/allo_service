@@ -5,6 +5,7 @@ import { AdduserComponent } from './adduser/adduser.component';
 import { MatDialog,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SharedService } from '../../shared/shared.service';
 import { EdituserComponent } from './edituser/edituser.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-users',
@@ -36,7 +37,10 @@ export class UsersComponent {
        this.getAllUsers();
     });
   }
-
+  getFirstError(errors: any): string {
+    const firstKey = Object.keys(errors)[0];
+    return errors[firstKey];
+  }
   getAllUsers() {
     this.userService.getAllUsers().subscribe(
       (response:any) => {
@@ -69,15 +73,46 @@ export class UsersComponent {
   }
 
   deleteUser(id:string) {
-    this.userService.deleteUser(id).subscribe(
-      (response) => {
-        this.users = [];
-        this.getAllUsers();
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+
+    Swal.fire({  
+      title: 'Are you sure want to remove?',  
+      text: 'You will not be able to recover this file!',  
+      icon: 'warning',  
+      showCancelButton: true,  
+      confirmButtonText: 'Yes, delete it!',  
+      cancelButtonText: 'No, keep it'  
+    }).then((result) => {  
+      if (result.value) {  
+        this.userService.deleteUser(id).subscribe(
+          (response) => {
+            this.users = [];
+            this.getAllUsers();
+            Swal.fire(  
+              'Deleted!',  
+              'user has been deleted successfuly.',  
+              'success'  
+            ) 
+          },
+          (error) => {
+            console.log(error);
+            Swal.fire(  
+              'Error!',  
+              this.getFirstError(error.error.details),  
+              'error'  
+            ) 
+          }
+        );
+         
+      } else if (result.dismiss === Swal.DismissReason.cancel) {  
+        Swal.fire(  
+          'Cancelled',  
+          'your data are safe',  
+          'error'  
+        )  
+      }  
+    })  
+
+    
   }
   
   hasRole(role: string): boolean {
