@@ -11,9 +11,11 @@ import { LoginComponent } from './auth/components/login/login.component';
 import { NotfoundComponent } from './errors/notfound/notfound.component';
 import { NotauthorizeComponent } from './errors/notauthorize/notauthorize.component';
 import { ForbiddenComponent } from './errors/forbidden/forbidden.component';
+import { UsersComponent } from './pages/dashboard/users/users.component';
 
 const routes: Routes = [
 
+  // landing page routing
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path:'home' , component: HomeComponent},
   {path:'about',component:AboutComponent},
@@ -25,6 +27,9 @@ const routes: Routes = [
   { path: 'verify-email', component: VerifyemailComponent},
   {path:'notauthorize',component:NotauthorizeComponent},
   {path:'forbidden',component:ForbiddenComponent},
+  // dashboard routing
+  {path:'users',component:UsersComponent},
+   // notfound
   {path: '**', component: NotfoundComponent, pathMatch: 'full'},
 
 ];

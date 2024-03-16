@@ -17,6 +17,9 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class AppComponent {
   title = 'client';
 
+  showContent = true;
+  isLoading = false;
+  dashboard = false;
   prepareRoute(outlet: any) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }

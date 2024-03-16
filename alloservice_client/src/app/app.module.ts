@@ -25,6 +25,12 @@ import { registerClientEffect, redirectAfterRegisterClientEffect,redirectAfterEm
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { SidebarComponent } from './pages/shared/sidebar/sidebar.component';
+import { NavbarComponent } from './pages/shared/navbar/navbar.component';
+import { UsersComponent } from './pages/dashboard/users/users.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { AuthInterceptor } from './auth/interceptor/auth.interceptor';
+import { AdduserComponent } from './pages/dashboard/users/adduser/adduser.component';
 
 @NgModule({
   declarations: [
@@ -41,10 +47,15 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     VerifyemailComponent,
     NotfoundComponent,
     NotauthorizeComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    SidebarComponent,
+    NavbarComponent,
+    UsersComponent,
+    AdduserComponent
   ],
   imports: [
     BrowserModule,
+    MatPaginatorModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
@@ -72,7 +83,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+
   ],
   bootstrap: [AppComponent]
 })
