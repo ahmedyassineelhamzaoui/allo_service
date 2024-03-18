@@ -30,7 +30,7 @@ const routes: Routes = [
   {path:'forbidden',component:ForbiddenComponent},
   // dashboard routing
   {path:'users',component:UsersComponent},
-  {path:'services',component:ServicesComponent},
+  {path:'manage_services',component:ServicesComponent},
    // notfound
   {path: '**', component: NotfoundComponent, pathMatch: 'full'},
 
