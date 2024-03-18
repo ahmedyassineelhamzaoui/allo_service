@@ -32,6 +32,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { AuthInterceptor } from './auth/interceptor/auth.interceptor';
 import { AdduserComponent } from './pages/dashboard/users/adduser/adduser.component';
 import { EdituserComponent } from './pages/dashboard/users/edituser/edituser.component';
+import { ServicesComponent } from './pages/dashboard/services/services.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { EdituserComponent } from './pages/dashboard/users/edituser/edituser.com
     NavbarComponent,
     UsersComponent,
     AdduserComponent,
-    EdituserComponent
+    EdituserComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,
