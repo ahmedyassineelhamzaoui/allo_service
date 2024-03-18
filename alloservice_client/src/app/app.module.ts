@@ -33,6 +33,7 @@ import { AuthInterceptor } from './auth/interceptor/auth.interceptor';
 import { AdduserComponent } from './pages/dashboard/users/adduser/adduser.component';
 import { EdituserComponent } from './pages/dashboard/users/edituser/edituser.component';
 import { ServicesComponent } from './pages/dashboard/services/services.component';
+import { AddserviceComponent } from './pages/dashboard/services/addservice/addservice.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ServicesComponent } from './pages/dashboard/services/services.component
     UsersComponent,
     AdduserComponent,
     EdituserComponent,
-    ServicesComponent
+    ServicesComponent,
+    AddserviceComponent
   ],
   imports: [
     BrowserModule,
