@@ -12,6 +12,7 @@ import { NotfoundComponent } from './errors/notfound/notfound.component';
 import { NotauthorizeComponent } from './errors/notauthorize/notauthorize.component';
 import { ForbiddenComponent } from './errors/forbidden/forbidden.component';
 import { UsersComponent } from './pages/dashboard/users/users.component';
+import { ServicesComponent } from './pages/dashboard/services/services.component';
 
 const routes: Routes = [
 
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:'forbidden',component:ForbiddenComponent},
   // dashboard routing
   {path:'users',component:UsersComponent},
+  {path:'services',component:ServicesComponent},
    // notfound
   {path: '**', component: NotfoundComponent, pathMatch: 'full'},
 
