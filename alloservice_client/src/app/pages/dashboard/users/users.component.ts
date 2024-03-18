@@ -76,7 +76,7 @@ export class UsersComponent {
 
     Swal.fire({  
       title: 'Are you sure want to remove?',  
-      text: 'You will not be able to recover this file!',  
+      text: 'You will not be able to recover this user!',  
       icon: 'warning',  
       showCancelButton: true,  
       confirmButtonText: 'Yes, delete it!',  
@@ -107,7 +107,7 @@ export class UsersComponent {
         Swal.fire(  
           'Cancelled',  
           'your data are safe',  
-          'error'  
+          'info'  
         )  
       }  
     })  
