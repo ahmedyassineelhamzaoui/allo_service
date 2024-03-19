@@ -17,7 +17,7 @@ export class AddserviceComponent {
     title: [''],
     description: [''],
     servicePicture: [''],
-    tags: [],
+    tags:  ['', this.minTagsValidator(2)],
   });
   saveService():void{
     console.log(this.form.value);

@@ -34,6 +34,7 @@ import { AdduserComponent } from './pages/dashboard/users/adduser/adduser.compon
 import { EdituserComponent } from './pages/dashboard/users/edituser/edituser.component';
 import { ServicesComponent } from './pages/dashboard/services/services.component';
 import { AddserviceComponent } from './pages/dashboard/services/addservice/addservice.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { AddserviceComponent } from './pages/dashboard/services/addservice/addse
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgSelectModule,
     FormsModule,
     ToastrModule.forRoot(),
     StoreModule.forRoot({}),
