@@ -35,6 +35,7 @@ import { EdituserComponent } from './pages/dashboard/users/edituser/edituser.com
 import { ServicesComponent } from './pages/dashboard/services/services.component';
 import { AddserviceComponent } from './pages/dashboard/services/addservice/addservice.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { TagsComponent } from './pages/dashboard/tags/tags.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     AdduserComponent,
     EdituserComponent,
     ServicesComponent,
-    AddserviceComponent
+    AddserviceComponent,
+    TagsComponent
   ],
   imports: [
     BrowserModule,
