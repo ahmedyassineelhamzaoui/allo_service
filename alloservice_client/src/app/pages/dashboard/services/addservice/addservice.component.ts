@@ -8,6 +8,9 @@ import { AbstractControl, FormBuilder, FormGroup, ValidatorFn } from '@angular/f
 })
 export class AddserviceComponent {
 
+
+  tags : [] = [];
+  
   constructor(private fb:FormBuilder) { }
 
   ngOnInit() {
