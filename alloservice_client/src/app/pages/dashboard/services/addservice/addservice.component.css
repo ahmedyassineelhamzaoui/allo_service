@@ -24,3 +24,19 @@
     max-height: 70vh;
     overflow-y: auto;
 }
+:host ::ng-deep .ng-select .ng-dropdown-panel {
+    background-color: #ffffff;
+    margin-left: -10px;
+    margin-top: 6px;
+    border: 1px solid rgb(165, 164, 164);
+}
+:host ::ng-deep .ng-select .ng-option {
+    padding: 2px;
+}
+:host ::ng-deep .ng-select .ng-value {
+    background-color: #0a5bac;
+    color:#ffffff;
+    padding: 3px 5px;
+    border-radius: 5%;
+    margin-right: 2px;
+} 

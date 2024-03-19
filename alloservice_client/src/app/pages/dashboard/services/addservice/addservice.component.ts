@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, RequiredValidator, ValidatorFn, Validators } from '@angular/forms';
+import { TagInterface } from '../../../shared/types/tag.interface';
+import { TagsService } from '../../../shared/tags.service';
+import { ResponseWithDetailsInterface } from '../../../../auth/shared/types/responseWithDetails.interface';
 
 @Component({
   selector: 'app-addservice',
@@ -9,11 +12,14 @@ import { AbstractControl, FormBuilder, FormGroup, RequiredValidator, ValidatorFn
 export class AddserviceComponent {
 
 
-  tags : [] = [];
+  tags : ResponseWithDetailsInterface[] = [];
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder,private tagsService:TagsService) { }
 
   ngOnInit() {
+    this.tagsService.getAllTags().subscribe((listOfTags:ResponseWithDetailsInterface)=>{
+      this.tags = listOfTags.details['tags'];
+    });
   }
    
   form = this.fb.group({
