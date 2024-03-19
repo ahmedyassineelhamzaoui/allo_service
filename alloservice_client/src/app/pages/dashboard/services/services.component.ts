@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { SharedService } from '../../shared/shared.service';
 import { PageEvent } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { AddserviceComponent } from './addservice/addservice.component';
 
 @Component({
   selector: 'app-services',
@@ -15,7 +17,8 @@ export class ServicesComponent {
   pageSize:number = 5;
   currentPageIndex:number = 0;
 
-  constructor(private sharedService:SharedService) { }
+  constructor(private sharedService:SharedService,
+    private dialog:MatDialog) { }
 
   hasRole(role: string): boolean {
     return this.sharedService.getRoles().some(r => r.role === role);
@@ -27,5 +30,12 @@ export class ServicesComponent {
   handlePageEvent(pageEvent: PageEvent) {
     this.currentPageIndex = pageEvent.pageIndex;
     this.pageSize = pageEvent.pageSize;
+  }
+  openAddServiceModal() {
+   const dialog = this.dialog.open(AddserviceComponent);
+   dialog.afterClosed().subscribe(()=>{
+      this.services = [];
+      // this.getAllServices();
+   });
   }
 }
