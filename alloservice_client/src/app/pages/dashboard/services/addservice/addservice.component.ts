@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-addservice',
@@ -27,5 +27,14 @@ export class AddserviceComponent {
       const selected = control.value;
       return selected && selected.length >= min ? null : { 'minTags': { value: control.value } };
     };
+  }
+  markFormControlsAsTouched(formGroup: FormGroup) {
+    Object.values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+
+      if (control instanceof FormGroup) {
+        this.markFormControlsAsTouched(control);
+      }
+    });
   }
 }
