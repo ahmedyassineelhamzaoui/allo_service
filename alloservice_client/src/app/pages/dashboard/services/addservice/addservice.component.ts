@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, RequiredValidator, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-addservice',
@@ -10,15 +10,15 @@ export class AddserviceComponent {
 
 
   tags : [] = [];
-  
+
   constructor(private fb:FormBuilder) { }
 
   ngOnInit() {
   }
    
   form = this.fb.group({
-    title: [''],
-    description: [''],
+    title: ['',[Validators.required, Validators.minLength(2)]],
+    description: ['',[Validators.required, Validators.minLength(5)]],
     servicePicture: [''],
     tags:  ['', this.minTagsValidator(2)],
   });

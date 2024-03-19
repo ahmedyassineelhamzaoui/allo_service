@@ -36,22 +36,21 @@
             <div>
                 <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Title
                 </label>
-                <input type="text" name="firstName" formControlName="title"
+                <input type="text" formControlName="title"
                     class="block w-full mt-1 text-sm border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
                 <strong *ngIf="form.get('title')?.invalid && form.get('title')?.touched">
-
+                    title is required.
                 </strong>
             </div>
             <div class="grid grid-cols-1 gap-4 mt-4">
-                <div class="max-w-30">
-                    <label for="tags"
-                        class="block text-sm font-medium text-gray-700 dark:text-gray-400">Tags</label>
-                    <ng-select formControlName="tags" [items]="tags" bindLabel="name" bindValue="id"   [multiple]="true" [closeOnSelect]="false" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                    </ng-select>
-                    <strong *ngIf="form.get('tags')?.invalid && form.get('tags')?.touched">
-                        <span class="text-red">Two tags at least are required</span>
-                    </strong>
-                </div>
+                <label for="tags" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Tags</label>
+                <ng-select formControlName="tags" [items]="tags" bindLabel="name" bindValue="id" [multiple]="true"
+                    [closeOnSelect]="false"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                </ng-select>
+                <strong *ngIf="form.get('tags')?.invalid && form.get('tags')?.touched">
+                    <span class="text-red">Two tags at least are required</span>
+                </strong>
             </div>
             <div>
                 <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Description
