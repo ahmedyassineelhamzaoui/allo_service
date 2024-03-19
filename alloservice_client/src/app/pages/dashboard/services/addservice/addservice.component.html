@@ -42,6 +42,17 @@
 
                 </strong>
             </div>
+            <div class="grid grid-cols-1 gap-4 mt-4">
+                <div class="max-w-30">
+                    <label for="tags"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-400">Tags</label>
+                    <ng-select formControlName="tags" [items]="tags" bindLabel="name" bindValue="id"   [multiple]="true" [closeOnSelect]="false" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    </ng-select>
+                    <strong *ngIf="form.get('tags')?.invalid && form.get('tags')?.touched">
+                        <span class="text-red">Two tags at least are required</span>
+                    </strong>
+                </div>
+            </div>
             <div>
                 <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Description
                 </label>

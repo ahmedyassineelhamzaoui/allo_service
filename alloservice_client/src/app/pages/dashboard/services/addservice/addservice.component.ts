@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { AbstractControl, FormBuilder, ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-addservice',
@@ -17,8 +17,15 @@ export class AddserviceComponent {
     title: [''],
     description: [''],
     servicePicture: [''],
+    tags: [],
   });
   saveService():void{
     console.log(this.form.value);
+  }
+  minTagsValidator(min = 2): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const selected = control.value;
+      return selected && selected.length >= min ? null : { 'minTags': { value: control.value } };
+    };
   }
 }
