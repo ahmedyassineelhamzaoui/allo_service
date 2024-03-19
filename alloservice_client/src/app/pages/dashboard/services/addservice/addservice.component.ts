@@ -13,6 +13,7 @@ export class AddserviceComponent {
 
 
   tags : ResponseWithDetailsInterface[] = [];
+  days : string[] = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 
   constructor(private fb:FormBuilder,private tagsService:TagsService) { }
 

@@ -36,6 +36,7 @@ import { ServicesComponent } from './pages/dashboard/services/services.component
 import { AddserviceComponent } from './pages/dashboard/services/addservice/addservice.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TagsComponent } from './pages/dashboard/tags/tags.component';
+import { AvailabilityComponent } from './pages/shared/availability/availability.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { TagsComponent } from './pages/dashboard/tags/tags.component';
     EdituserComponent,
     ServicesComponent,
     AddserviceComponent,
-    TagsComponent
+    TagsComponent,
+    AvailabilityComponent
   ],
   imports: [
     BrowserModule,
