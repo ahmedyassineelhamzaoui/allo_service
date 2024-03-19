@@ -74,23 +74,21 @@
                 <span class="text-danger">Two tags at least are required</span>
             </strong>
         </div>
-        <div>
-            <label for="availability"
-                class="block text-sm mt-3 font-medium text-gray-700 dark:text-gray-400">availability</label>
-            <div class=" grid grid-cols-3 gap-2">
-                <div>
-                    <input type="time" formControlName="startTime"
-                        class="block w-full py-2.5 mt-1 text-sm border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+        <div class="mt-2"> 
+            <div class="flex align-center justify-between">
+                <label for="availability"
+                class="block text-sm mt-3 font-medium text-gray-700">availability</label>
+                <div class="flex items-center">
+                    <button type="button"
+            class="text-white bg-pink-500 hover:bg-yellow-600   font-medium rounded-md px-2.5 py-2 text-center me-2 mb-2"><i
+                class="fa-solid fa-minus"></i></button>
+                <button type="button"
+                class="text-white bg-purple-500  hover:bg-green-600 font-medium rounded-md  px-2.5 py-2 text-center me-2 mb-2"><i
+                    class="fa-solid fa-plus"></i></button>
                 </div>
-                <div>
-                    <input type="time" formControlName="endTime"
-                        class="block w-full py-2.5 mt-1 text-sm border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
-                </div>
-                <ng-select formControlName="days" [items]="days" bindLabel="name" bindValue="id" [multiple]="true"
-                    [closeOnSelect]="false" 
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-1">
-                </ng-select>
             </div>
+            
+            <app-availability></app-availability>
         </div>
 
         <div class="flex justify-end align-center my-4 ">

@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './availability.component.css'
 })
 export class AvailabilityComponent {
+  days : string[] = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 
 }
