@@ -74,21 +74,21 @@
                 <span class="text-danger">Two tags at least are required</span>
             </strong>
         </div>
-        <div class="mt-2"> 
+        <div class="mt-2">
             <div class="flex align-center justify-between">
-                <label for="availability"
-                class="block text-sm mt-3 font-medium text-gray-700">availability</label>
+                <label for="availability" class="block text-sm mt-3 font-medium text-gray-700">availability</label>
                 <div class="flex items-center">
-                    <button type="button"
-            class="text-white bg-pink-500 hover:bg-yellow-600   font-medium rounded-md px-2.5 py-2 text-center me-2 mb-2"><i
-                class="fa-solid fa-minus"></i></button>
-                <button type="button"
-                class="text-white bg-purple-500  hover:bg-green-600 font-medium rounded-md  px-2.5 py-2 text-center me-2 mb-2"><i
-                    class="fa-solid fa-plus"></i></button>
+                    <button type="button" (click)="removeAvailability()" [ngClass]="{'hidden':availabilities.length === 1}" 
+                        class="text-white bg-pink-500 hover:bg-yellow-600   font-medium rounded-md px-2.5 py-2 text-center me-2 mb-2"><i
+                            class="fa-solid fa-minus"></i></button>
+                    <button type="button" (click)="addAvailability()"
+                        class="text-white bg-purple-500  hover:bg-green-600 font-medium rounded-md  px-2.5 py-2 text-center me-2 mb-2"><i
+                            class="fa-solid fa-plus"></i></button>
                 </div>
             </div>
-            
-            <app-availability></app-availability>
+
+            <app-availability *ngFor="let availability of availabilities"></app-availability>
+
         </div>
 
         <div class="flex justify-end align-center my-4 ">

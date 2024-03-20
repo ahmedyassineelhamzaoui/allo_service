@@ -14,7 +14,9 @@ export class AddserviceComponent {
 
   tags : ResponseWithDetailsInterface[] = [];
   days : string[] = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  availabilities = [0]; 
 
+  
   constructor(private fb:FormBuilder,private tagsService:TagsService) { }
 
   ngOnInit() {
@@ -46,5 +48,14 @@ export class AddserviceComponent {
         this.markFormControlsAsTouched(control);
       }
     });
+  }
+  addAvailability() {
+    this.availabilities.push(this.availabilities.length);
+  }
+
+  removeAvailability() {
+    if (this.availabilities.length > 1) {
+      this.availabilities.pop(); 
+    }
   }
 }
