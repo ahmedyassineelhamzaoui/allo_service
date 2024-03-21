@@ -71,7 +71,7 @@
             <label for="picture" class="block text-sm font-medium text-gray-700 dark:text-gray-400">service
                 picture
             </label>
-            <input type="file" formControlName="servicePicture"
+            <input type="file" formControlName="servicePicture"  (change)="selectFile($event)"
                 class="block w-full mt-1 text-sm border border-gray-300 rounded-md ">
             <strong class="text-danger"
                 *ngIf="form.get('servicePicture')?.invalid && form.get('servicePicture')?.touched">

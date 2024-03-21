@@ -14,7 +14,7 @@ import { Days } from '../../../shared/enums/days.enum';
 })
 export class AddserviceComponent {
 
-
+  file!: File;
   tags : ResponseWithDetailsInterface[] = [];
   days = Object.keys(Days)
   .filter(key => isNaN(Number(key))) 
@@ -35,7 +35,7 @@ export class AddserviceComponent {
     title: ['',[Validators.required, Validators.minLength(2)]],
     description: ['',[Validators.required, Validators.minLength(5)]],
     price : ['',[Validators.required, Validators.min(0)]],
-    servicePicture: [''],
+    servicePicture: ['',Validators.required],
     tags:  ['', this.minTagsValidator(2)],
     availabilities: this.fb.array([
       this.fb.group({
@@ -89,6 +89,10 @@ export class AddserviceComponent {
 
   removeAvailability(availabilityIndex: number) {
     this.availabilities.removeAt(availabilityIndex);
+  }
+
+  selectFile(event: any) {
+    this.file = event.target.files.item(0);
   }
   
 }
