@@ -119,7 +119,7 @@ export class AddserviceComponent {
     const availabilityForm = this.fb.group({
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
-      day: [''],
+      day: ['',[Validators.required,this.minDaysValidator(1)]],
     });
     this.availabilities.push(availabilityForm);
   }
