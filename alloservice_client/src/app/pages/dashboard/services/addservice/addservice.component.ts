@@ -137,4 +137,5 @@ export class AddserviceComponent {
   closeAddServiceModal(){
     this.matDialog.close();
   }
+  
 }

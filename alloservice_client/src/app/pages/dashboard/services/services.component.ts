@@ -4,6 +4,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { AddserviceComponent } from './addservice/addservice.component';
 import { ServiceService } from '../../shared/service.service';
+import { ServicedetailsComponent } from './servicedetails/servicedetails.component';
 
 @Component({
   selector: 'app-services',
@@ -54,6 +55,13 @@ export class ServicesComponent {
       this.services = response.details.services;
     },(error)=>{
       this.errorMessage = error.error.message;
+    });
+  }
+  showMoreDetails(id:string){
+    this.dialog.open(ServicedetailsComponent,{
+      data:{
+        id: id
+      }
     });
   }
 }
