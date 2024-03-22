@@ -43,7 +43,7 @@ export class ServicesComponent {
    const dialog = this.dialog.open(AddserviceComponent);
    dialog.afterClosed().subscribe(()=>{
       this.services = [];
-      // this.getAllServices();
+      this.getAllServices();
    });
   }
 
