@@ -37,6 +37,7 @@ import { AddserviceComponent } from './pages/dashboard/services/addservice/addse
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TagsComponent } from './pages/dashboard/tags/tags.component';
 import { AvailabilityComponent } from './pages/shared/availability/availability.component';
+import { ServicedetailsComponent } from './pages/dashboard/services/servicedetails/servicedetails.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { AvailabilityComponent } from './pages/shared/availability/availability.
     ServicesComponent,
     AddserviceComponent,
     TagsComponent,
-    AvailabilityComponent
+    AvailabilityComponent,
+    ServicedetailsComponent,
   ],
   imports: [
     BrowserModule,
