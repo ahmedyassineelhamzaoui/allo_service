@@ -51,6 +51,9 @@
                     Description
                 </th>
                 <th scope="col" class="px-6 py-3 text-center">
+                    price
+                </th>
+                <th scope="col" class="px-6 py-3 text-center">
                     status
                 </th>
                 <th scope="col" class="px-6 py-3 text-center">
@@ -66,10 +69,13 @@
             <tr *ngFor="let service of services | slice: currentPageIndex * pageSize : (currentPageIndex + 1) * pageSize;let i =index "
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <td class="px-6 py-4 text-center ">
-                    {{service.title}}
+                    {{service.title.length > 20 ? service.title.substring(0, 20) + '...' : service.title}}
                 </td>
                 <td class="px-6 py-4 text-center">
-                    {{service.description}}
+                    {{service.description.length > 20 ? service.description.substring(0, 20) + '...' : service.description}}
+                </td>
+                <td class="px-6 py-4 text-center">
+                    {{service.price}}
                 </td>
                 <td class="px-6 py-4 text-center">
                     {{service.serviceStatus}}
