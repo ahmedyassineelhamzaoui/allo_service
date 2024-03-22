@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-servicedetails',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class ServicedetailsComponent {
 
+  constructor(
+    private dialogRef: MatDialogRef<ServicedetailsComponent>
+  ) { }
+  closeModal():void{
+    this.dialogRef.close();
+  }
 }
