@@ -1,11 +1,13 @@
-import { Component, QueryList, ViewChildren } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, RequiredValidator, ValidatorFn, Validators } from '@angular/forms';
-import { TagInterface } from '../../../shared/types/tag.interface';
+import { Component } from '@angular/core';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { TagsService } from '../../../shared/tags.service';
 import { ResponseWithDetailsInterface } from '../../../../auth/shared/types/responseWithDetails.interface';
-import { AvailabilityRequestInterface } from '../../../shared/types/availabilityRequest.interface';
-import { AvailabilityComponent } from '../../../shared/availability/availability.component';
 import { Days } from '../../../shared/enums/days.enum';
+import { AddServiceReqeustInterface } from '../../../shared/types/addServiceRequest.interface';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ServiceService } from '../../../shared/service.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-addservice',
@@ -15,12 +17,19 @@ import { Days } from '../../../shared/enums/days.enum';
 export class AddserviceComponent {
 
   file!: File;
+  errorMessage = '';
   tags : ResponseWithDetailsInterface[] = [];
   days = Object.keys(Days)
   .filter(key => isNaN(Number(key))) 
   .map((key) => ({ id: key, name: key })); 
 
-  constructor(private fb:FormBuilder,private tagsService:TagsService) { }
+  constructor(
+    private fb:FormBuilder,
+    private tagsService:TagsService,
+    private serviceService:ServiceService,
+    private matDialog: MatDialogRef<AddserviceComponent>,
+    private toaster:ToastrService
+  ) { }
 
   ngOnInit() {
     this.tagsService.getAllTags().subscribe((listOfTags:ResponseWithDetailsInterface)=>{
@@ -53,7 +62,31 @@ export class AddserviceComponent {
   }
 
   saveService():void{
-    console.log(this.form.value);
+    this.markFormControlsAsTouched(this.form);
+    if (this.form.valid) {
+      const formValues = this.form.getRawValue();
+
+      const request: AddServiceReqeustInterface = {
+        title: this.form.get('title')?.value || '',
+        description: this.form.get('description')?.value || '',
+        price: Number(this.form.get('price')?.value),
+        tags: Array.isArray(formValues.tags) ? formValues.tags.map((tagId: string) => ({ id: tagId, name: '' })) : [],
+        availabilities: this.form.get('availabilities')?.value.map((availability: any) => ({
+          ...availability,
+          startTime: availability.startTime + ':00',
+          endTime: availability.endTime + ':00'
+        })) || [],
+      };
+      this.serviceService.createService(request,this.file).subscribe(
+        (response: any) => {
+          this.form.reset();
+          this.toaster.success('Service added successfully');
+        },
+        (error:HttpErrorResponse) => {
+          this.errorMessage = error.error.message;
+        }
+      );
+    }
   }
   minTagsValidator(min = 2): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
@@ -94,5 +127,10 @@ export class AddserviceComponent {
   selectFile(event: any) {
     this.file = event.target.files.item(0);
   }
-  
+  closeAlert() {
+    this.errorMessage = '';
+  }
+  closeAddServiceModal(){
+    this.matDialog.close();
+  }
 }

@@ -6,5 +6,5 @@ export interface AddServiceReqeustInterface{
     description: string;
     tags: TagInterface[];
     price: number;
-    availability: AvailabilityRequestInterface[];
+    availabilities: AvailabilityRequestInterface[];
 }
