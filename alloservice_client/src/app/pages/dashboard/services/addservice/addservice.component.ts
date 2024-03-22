@@ -16,6 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddserviceComponent {
 
+  isSubmiting:boolean = false;
   file!: File;
   errorMessage = '';
   tags : ResponseWithDetailsInterface[] = [];
@@ -64,6 +65,7 @@ export class AddserviceComponent {
   saveService():void{
     this.markFormControlsAsTouched(this.form);
     if (this.form.valid) {
+      this.isSubmiting = true;
       const formValues = this.form.getRawValue();
 
       const request: AddServiceReqeustInterface = {
@@ -79,10 +81,12 @@ export class AddserviceComponent {
       };
       this.serviceService.createService(request,this.file).subscribe(
         (response: any) => {
+          this.isSubmiting = false;
           this.form.reset();
           this.toaster.success('Service added successfully');
         },
         (error:HttpErrorResponse) => {
+          this.isSubmiting = false;
           this.errorMessage = error.error.message;
         }
       );
