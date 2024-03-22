@@ -52,6 +52,7 @@ export class ServicesComponent {
     this.serviceService.getAllServices().subscribe(
     (response:any)=>{
       this.services = response.details.services;
+      console.log(this.services);
     },(error)=>{
       this.errorMessage = error.error.message;
     });

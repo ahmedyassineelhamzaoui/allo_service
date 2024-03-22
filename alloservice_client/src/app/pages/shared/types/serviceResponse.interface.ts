@@ -3,7 +3,7 @@ import { TagInterface } from "./tag.interface";
 
 export interface ServiceResponseInterface {
     id: string;
-    user: string;
+    user:  string[];
     title: string;
     price: number;
     description: string;

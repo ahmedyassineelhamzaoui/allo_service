@@ -54,7 +54,7 @@
                         status
                     </th>
                     <th scope="col" class="px-6 py-3 text-center">
-                        availability
+                        tags
                     </th>
                     <th  scope="col" class="px-6 py-3 text-center">
                         Action
@@ -75,7 +75,9 @@
                         {{service.serviceStatus}}
                     </td>   
                     <td class="px-6 py-4 text-center">
-                        {{service.tags}}
+                        @for(tag of service.tags; track tag.id){
+                            {{tag.name}}
+                        }
                     </td>
                     <td class="px-6 py-4 text-center">
                         <div class="flex items-center justify-center">
