@@ -3,6 +3,7 @@ import { SharedService } from '../../shared/shared.service';
 import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { AddserviceComponent } from './addservice/addservice.component';
+import { ServiceService } from '../../shared/service.service';
 
 @Component({
   selector: 'app-services',
@@ -17,8 +18,15 @@ export class ServicesComponent {
   pageSize:number = 5;
   currentPageIndex:number = 0;
 
-  constructor(private sharedService:SharedService,
-    private dialog:MatDialog) { }
+  constructor(
+    private sharedService:SharedService,
+    private dialog:MatDialog,
+    private serviceService:ServiceService
+  ) { }
+
+  ngOnInit(){
+    this.getAllServices();
+  }
 
   hasRole(role: string): boolean {
     return this.sharedService.getRoles().some(r => r.role === role);
@@ -37,5 +45,15 @@ export class ServicesComponent {
       this.services = [];
       // this.getAllServices();
    });
+  }
+
+  getAllServices() {
+    this.isLoading = true;
+    this.serviceService.getAllServices().subscribe(
+    (response:any)=>{
+      this.services = response.details.services;
+    },(error)=>{
+      this.errorMessage = error.error.message;
+    });
   }
 }

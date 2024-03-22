@@ -21,7 +21,11 @@ export class ServiceService {
     formData.append('image', file, file.name);
     console.log(formData.get('request'));
     console.log(formData.get('image'));
-    
+
     return this.http.post<ResponseWithDetailsInterface>(environment.apiURL + 'addservice', formData);
+  }
+
+  getAllServices(): Observable<ResponseWithDetailsInterface>{
+    return this.http.get<ResponseWithDetailsInterface>(environment.apiURL + 'services');
   }
 } 
