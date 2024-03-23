@@ -1,9 +1,10 @@
 import { AvailabilityRequestInterface } from "./availabilityRequest.interface";
 import { TagInterface } from "./tag.interface";
+import { UserResponseInterface } from "./userResponse.interface";
 
 export interface ServiceResponseInterface {
     id: string;
-    user:  string[];
+    user:  UserResponseInterface;
     title: string;
     price: number;
     description: string;

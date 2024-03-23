@@ -1,6 +1,7 @@
 import { Component,Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ServiceService } from '../../../shared/service.service';
+import { ServiceResponseInterface } from '../../../shared/types/serviceResponse.interface';
 
 @Component({
   selector: 'app-servicedetails',
@@ -8,7 +9,7 @@ import { ServiceService } from '../../../shared/service.service';
   styleUrl: './servicedetails.component.css'
 })
 export class ServicedetailsComponent {
-  service:any = {};
+  service:ServiceResponseInterface;
   constructor(
     private dialogRef: MatDialogRef<ServicedetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { id: string},
