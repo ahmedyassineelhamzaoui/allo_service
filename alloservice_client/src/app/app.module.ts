@@ -39,6 +39,7 @@ import { TagsComponent } from './pages/dashboard/tags/tags.component';
 import { AvailabilityComponent } from './pages/shared/availability/availability.component';
 import { ServicedetailsComponent } from './pages/dashboard/services/servicedetails/servicedetails.component';
 import { EdittagComponent } from './pages/dashboard/tags/edittag/edittag.component';
+import { AddtagComponent } from './pages/dashboard/tags/addtag/addtag.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { EdittagComponent } from './pages/dashboard/tags/edittag/edittag.compone
     AvailabilityComponent,
     ServicedetailsComponent,
     EdittagComponent,
+    AddtagComponent,
   ],
   imports: [
     BrowserModule,
