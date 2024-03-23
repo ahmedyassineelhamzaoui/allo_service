@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edittag',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class EdittagComponent {
 
+  constructor(
+    private dialogRef:MatDialogRef<EdittagComponent>
+  ){
+  }
+  closeEditTagModal():void{
+    this.dialogRef.close();
+  }
 }
