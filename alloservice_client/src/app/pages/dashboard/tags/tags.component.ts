@@ -4,6 +4,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { EdittagComponent } from './edittag/edittag.component';
 import Swal from 'sweetalert2';
+import { AddtagComponent } from './addtag/addtag.component';
 
 @Component({
   selector: 'app-tags',
@@ -17,16 +18,19 @@ export class TagsComponent {
   pageSize:number = 5;
 
   constructor(
-    private dilog:MatDialog
+    private dialog:MatDialog
   ){}
 
   handlePageEvent(event:PageEvent){
     this.currentPageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
   }
+  opentAddTagModal():void{
+      this.dialog.open(AddtagComponent);
+  }
   openEditTagModal():void{
 
-      this.dilog.open(EdittagComponent);
+      this.dialog.open(EdittagComponent);
   }
   deleteTag():void{
     Swal.fire({  
