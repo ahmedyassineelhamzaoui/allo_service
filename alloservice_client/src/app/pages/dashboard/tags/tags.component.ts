@@ -16,4 +16,7 @@ export class TagsComponent {
     this.currentPageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
   }
+  openEditTagModal():void{
+    
+  }
 }

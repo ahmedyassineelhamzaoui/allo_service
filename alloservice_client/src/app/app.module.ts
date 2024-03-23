@@ -38,6 +38,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { TagsComponent } from './pages/dashboard/tags/tags.component';
 import { AvailabilityComponent } from './pages/shared/availability/availability.component';
 import { ServicedetailsComponent } from './pages/dashboard/services/servicedetails/servicedetails.component';
+import { EdittagComponent } from './pages/dashboard/tags/edittag/edittag.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { ServicedetailsComponent } from './pages/dashboard/services/servicedetai
     TagsComponent,
     AvailabilityComponent,
     ServicedetailsComponent,
+    EdittagComponent,
   ],
   imports: [
     BrowserModule,
