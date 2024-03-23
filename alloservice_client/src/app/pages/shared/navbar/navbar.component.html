@@ -10,33 +10,33 @@
            </button>
           <a href="https://flowbite.com" class="flex ms-2 md:me-24">
             <img src="/assets/images/logo.png" class="h-8 me-3" alt="aftas Logo" />
-            <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">AFTAS</span>
+            <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">ALLO SERVICE</span>
           </a>
         </div>
         <div class="flex items-center">
             <div class="flex items-center ms-3 relative">
               <div>
                 
-                <button (click)="toggleDropdown()"  type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 " aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                <button (click)="toggleDropdown()"  type="button" class="flex text-sm bg-gray-800 rounded-full" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                   <span class="sr-only">Open user menu</span>
                   <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
                 </button>
               </div>
               <div  [class.hidden]="!dropdownOpen" class="absolute z-50 top-6  -end-2 mt-4 list-none bg-white divide-y divide-gray-100 rounded shadow " >
-                <div class="px-4 py-2" role="none">
-                  <p class="text-sm text-gray-900" role="none">
+                <div class="">
+                  <p class="text-sm text-gray-900">
                     {{userName}}
                   </p>
                 </div>
-                <ul class="py-1" role="none">
+                <ul class="py-1">
                   <li>
-                    <a class="block py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
+                    <a class="block py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Dashboard</a>
                   </li>
                   <li>
-                    <a  class="block  py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
+                    <a  class="block  py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
                   </li>
                   <li>
-                    <button  class="block  py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</button>
+                    <button  class="block  py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</button>
                     <!-- (click)="logout()" -->
                   </li>
                 </ul>

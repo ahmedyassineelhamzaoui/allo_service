@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +20,17 @@ export class AppComponent {
 
   showContent = true;
   isLoading = false;
-  dashboard = false;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.showContent = !['/signup-worker', '/signup-user','/login','/verify-email','/home','/about','/contact','/services'].includes(event.urlAfterRedirects);
+      }
+    });
+  }
+
   prepareRoute(outlet: any) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }
+
 }
