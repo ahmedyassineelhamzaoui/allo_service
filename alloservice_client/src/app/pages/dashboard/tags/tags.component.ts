@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TagInterface } from '../../shared/types/tag.interface';
 
 @Component({
   selector: 'app-tags',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './tags.component.css'
 })
 export class TagsComponent {
-
+  tags :TagInterface[] = [];
 }
