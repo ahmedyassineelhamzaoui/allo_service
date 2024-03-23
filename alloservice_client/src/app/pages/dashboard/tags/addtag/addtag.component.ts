@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-addtag',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AddtagComponent {
 
+  constructor(
+    private dialogRef:MatDialogRef<AddtagComponent>
+  ){
+  }
+  closeAddTagModal():void{
+    this.dialogRef.close();
+  }
 }
