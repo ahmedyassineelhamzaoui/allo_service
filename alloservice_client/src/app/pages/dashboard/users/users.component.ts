@@ -46,7 +46,6 @@ export class UsersComponent {
       (response:any) => {
         this.isLoading = false;
         this.users.push(...response.details.users);
-        console.table(this.users);
       },
       (error) => {
         this.isLoading = false;

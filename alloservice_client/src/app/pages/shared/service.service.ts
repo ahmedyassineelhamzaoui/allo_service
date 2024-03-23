@@ -28,4 +28,7 @@ export class ServiceService {
   getAllServices(): Observable<ResponseWithDetailsInterface>{
     return this.http.get<ResponseWithDetailsInterface>(environment.apiURL + 'services');
   }
+  getServiceDetails(id: string): Observable<ResponseWithDetailsInterface>{
+    return this.http.get<ResponseWithDetailsInterface>(environment.apiURL + 'service/' + id);
+  }
 } 
