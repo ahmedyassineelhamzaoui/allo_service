@@ -1,1 +1,18 @@
-<p>addtag works!</p>
+<div id="save-tag-container">
+
+    <form id="save-tag-form">
+
+        <div class="flex justify-start">
+            <h2 class="font-bold">Add Tag</h2>
+        </div>
+        <div class="mt-3 grid grid-cols-2 gap-2">
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-400">
+                    Tag Name
+                </label>
+                <input type="text" name="name" formControlName="name"
+                    class="block w-full mt-1 text-sm border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+            </div>
+        </div>
+    </form>
+</div>
