@@ -15,42 +15,34 @@
         <div class="flex justify-center">
             <div class="flex flex-col justify-center items-center">
                 <h1 class="text-2xl font-bold text-blue-800">{{service.title}}</h1>
-                <p class="text-lg text-gray-500 " style="width: 80%;max-height: 20vh;overflow-y: auto;">Lorem ipsum
-                    dolor sit, amet consectetur adipisicing elit. Eum numquam quaerat voluptas recusandae doloribus?
-                    Laboriosam modi obcaecati assumenda vel possimus autem fugit eius, sunt eligendi nihil expedita
-                    soluta itaque dignissimos!
-                    Eum error veniam ducimus, neque labore id, deleniti laboriosam iure veritatis a possimus atque
-                    vitae, nesciunt sit? Nostrum assumenda itaque iste tempora commodi. Mollitia, cupiditate numquam
-                    dolores recusandae suscipit quam.
-                    Fugiat, maiores. At magnam minus quis quam fugit accusantium repellat exercitationem! Ullam eius
-                    odit dolore incidunt eveniet. Illo minima nulla, beatae dolorem minus architecto voluptatem eum
-                    recusandae sed labore? Porro.
-                    Tempore incidunt, delectus minima blanditiis in at temporibus tenetur error. Laudantium eligendi
-                    quisquam, modi aliquam quam tempore optio, atque quae cumque iure illum debitis. Temporibus fugit
-                    adipisci similique recusandae iure.
-                    Rem, corrupti! Inventore, consequatur! Excepturi exercitationem, enim sed sunt alias ipsum expedita
-                    cumque molestias magni impedit porro sit ipsa rem ab quod laboriosam doloremque consectetur, totam
-                    facilis. Quo, modi ipsa!</p>
+                <p class="text-lg text-gray-500 " style="width: 80%;max-height: 20vh;overflow-y: auto;">
+                {{service.description}}
+                </p>
             </div>
         </div>
         
         <div class="mt-1">
             <p style="width: 80%;margin-left: 10%;font-weight: bolder;">Availabilities</p>
         </div>
-        <div class="flex mx-auto justify-between items-center" style="width: 80%;">
-            <div>
-                <span class="mr-1 mb-1">statr time</span>
-                to
-                <span class="mr-1 mb-1">end time</span>
+        @for(availability of service.availabilities ; track $index ){
+            <div class="flex mx-auto justify-between items-center" style="width: 80%;">
+                <div>
+                    <span class="mr-1 mb-1">{{availability.startTime}}</span>
+                    to
+                    <span class="mr-1 mb-1">{{availability.endTime}}</span>
+                </div>
+                <!-- @for (day of availability.day; track $index) {
+                    <span class="bg-yellow-600 text-white rounded-md mr-1 mb-1 px-2 py-1"></span>
+                } -->
             </div>
-            <span class="bg-yellow-600 text-white rounded-md mr-1 mb-1 px-2 py-1">Days</span>
-        </div>
+        }
+        
         <div class="flex justify-center">
             <div class="flex flex-col justify-center items-center" >
                 <div class="flex flex-wrap justify-center">
-                    <span class="bg-pink-500 text-white rounded-md mr-1 mb-1 px-2 py-1">Tag 1</span>
-                    <span class="bg-pink-500 text-white rounded-md mr-1 mb-1 px-2 py-1">Tag 2</span>
-                    <span class="bg-pink-500 text-white rounded-md mr-1 mb-1 px-2 py-1">Tag 3</span>
+                    @for(tag of service.tags; track tag.id){
+                        <span class="bg-pink-500 text-white rounded-md mr-1 mb-1 px-2 py-1">{{tag.name}}</span>
+                    }
                 </div>
             </div>
         </div>
@@ -58,7 +50,7 @@
             <button class="p-2 rounded-md bg-green-500 mr-1 text-white">
                 <i class="fa-brands fa-whatsapp mr-2 font-bold"></i> 0636383838
             </button>
-            <p class="text-lg text-gray-500">123 <span>MAD</span></p>
+            <p class="text-lg text-gray-500">{{service.price}} <span>MAD</span></p>
         </div>
     </div>
 </div>

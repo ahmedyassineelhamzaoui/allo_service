@@ -98,7 +98,7 @@ import { ServicedetailsComponent } from './pages/dashboard/services/servicedetai
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
 
   ],
   bootstrap: [AppComponent]

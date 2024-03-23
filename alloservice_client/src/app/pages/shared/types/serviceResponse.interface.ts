@@ -11,5 +11,4 @@ export interface ServiceResponseInterface {
     tags : TagInterface[];
     availabilities : AvailabilityRequestInterface[];
     serviceStatus: string;
-
 }

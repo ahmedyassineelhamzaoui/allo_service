@@ -9,7 +9,7 @@ import { ServiceResponseInterface } from '../../../shared/types/serviceResponse.
   styleUrl: './servicedetails.component.css'
 })
 export class ServicedetailsComponent {
-  service:ServiceResponseInterface;
+  service:ServiceResponseInterface = {} as ServiceResponseInterface;
   constructor(
     private dialogRef: MatDialogRef<ServicedetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { id: string},
@@ -22,6 +22,7 @@ export class ServicedetailsComponent {
     this.serviceService.getServiceDetails(this.data.id).subscribe(
     (response:any)=>{
       this.service = response.details.service;
+      console.log(this.service);
     },
     (error)=>{
       console.log(error);
