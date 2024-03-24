@@ -54,6 +54,7 @@ export class ServicesComponent {
     (response:any)=>{
       this.services = response.details.services;
     },(error)=>{
+      console.log(error)
       this.errorMessage = error.error.message;
     });
   }
