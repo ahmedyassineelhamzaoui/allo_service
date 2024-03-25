@@ -96,9 +96,16 @@
                         <button title="more" class="p-2 rounded-md bg-green-600 mr-1 " (click)="showMoreDetails(service.id)">
                             <i class="fa-solid fa-eye text-white"></i>
                         </button>
-                        <button (click)="openEditServiceAsAdmin(service.id,service.serviceStatus)" title="edit" class="p-2 rounded-md bg-yellow-400 mr-1 ">
-                            <i class="fa-solid fa-pen-to-square text-white"></i>
-                        </button>
+                        @if (hasRole("ROLE_ADMIN")) {
+                            <button  (click)="openEditServiceAsAdmin(service.id,service.serviceStatus)" title="edit" class="p-2 rounded-md bg-yellow-400 mr-1 ">
+                                <i class="fa-solid fa-pen-to-square text-white"></i>
+                            </button>
+                        }@else {
+                            <button  (click)="openEditServiceAsWWorker(service.id)" title="edit" class="p-2 rounded-md bg-yellow-400 mr-1 ">
+                                <i class="fa-solid fa-pen-to-square text-white"></i>
+                            </button>
+                        }
+                        
                         <button title="delete" class="p-2 rounded-md bg-red-600 mr-1 ">
                             <i class="fa-solid fa-trash-can text-white "></i>
                         </button>

@@ -6,6 +6,7 @@ import { AddserviceComponent } from './addservice/addservice.component';
 import { ServiceService } from '../../shared/service.service';
 import { ServicedetailsComponent } from './servicedetails/servicedetails.component';
 import { EditserviceasadminComponent } from './editserviceasadmin/editserviceasadmin.component';
+import { EditserviceasworkerComponent } from './editserviceasworker/editserviceasworker.component';
 
 @Component({
   selector: 'app-services',
@@ -32,6 +33,18 @@ export class ServicesComponent {
 
   openEditServiceAsAdmin(id:string,status:string):void{
     const dialog = this.dialog.open(EditserviceasadminComponent,{
+      data:{
+        id: id,
+        status :status
+      }
+    });
+    dialog.afterClosed().subscribe(()=>{
+      this.services = [];
+      this.getAllServices();
+    });
+  }
+  openEditServiceAsWWorker(id:string):void{
+    const dialog = this.dialog.open(EditserviceasworkerComponent,{
       data:{
         id: id,
         status :status
