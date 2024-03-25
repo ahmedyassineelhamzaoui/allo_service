@@ -11,9 +11,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './editserviceasadmin.component.css'
 })
 export class EditserviceasadminComponent {
-
+  errorMessage:string = '';
   serviceStatus = [
-    {name:'pending',value:'PENDING'},
     {name:'approved',value:'APPROVED'},
     {name:'rejected',value:'NOT_APPROVED'}
   ]
@@ -46,9 +45,12 @@ export class EditserviceasadminComponent {
         this.dialogRef.close();
       },
       (error)=>{
+        this.errorMessage = error.error.message;
         console.log(error);
       }
     )
   }
-  
+  closeAlert():void{
+    this.errorMessage = '';
+  }
 }

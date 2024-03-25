@@ -31,11 +31,15 @@ export class ServicesComponent {
   }
 
   openEditServiceAsAdmin(id:string,status:string):void{
-    this.dialog.open(EditserviceasadminComponent,{
+    const dialog = this.dialog.open(EditserviceasadminComponent,{
       data:{
         id: id,
         status :status
       }
+    });
+    dialog.afterClosed().subscribe(()=>{
+      this.services = [];
+      this.getAllServices();
     });
   }
   hasRole(role: string): boolean {
