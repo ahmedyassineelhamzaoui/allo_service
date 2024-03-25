@@ -13,7 +13,12 @@ export class EditserviceasworkerComponent {
     @Inject(MAT_DIALOG_DATA) public data: { id: string}
   ) { }
 
+  ngOnInit():void{
+    
+  }
+
   closeEditServiceModal():void{
     this.dialogRef.close();
   }
+
 }

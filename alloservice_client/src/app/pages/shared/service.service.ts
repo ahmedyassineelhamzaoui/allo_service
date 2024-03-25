@@ -35,4 +35,8 @@ export class ServiceService {
   editServiceAsAdmin(id: string, request:RequestStatusInterface): Observable<ResponseWithDetailsInterface>{
     return this.http.put<ResponseWithDetailsInterface>(environment.apiURL + 'service/editserviceasadmin/' + id, request);
   }
+
+  getServiceById(id:string): Observable<ResponseWithDetailsInterface>{
+      return this.http.get<ResponseWithDetailsInterface>(environment.apiURL + 'service/'+id);
+  }
 } 
