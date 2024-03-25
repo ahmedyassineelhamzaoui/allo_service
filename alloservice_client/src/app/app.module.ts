@@ -41,6 +41,7 @@ import { ServicedetailsComponent } from './pages/dashboard/services/servicedetai
 import { EdittagComponent } from './pages/dashboard/tags/edittag/edittag.component';
 import { AddtagComponent } from './pages/dashboard/tags/addtag/addtag.component';
 import { EditserviceasadminComponent } from './pages/dashboard/services/editserviceasadmin/editserviceasadmin.component';
+import { EditserviceasworkerComponent } from './pages/dashboard/services/editserviceasworker/editserviceasworker.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { EditserviceasadminComponent } from './pages/dashboard/services/editserv
     EdittagComponent,
     AddtagComponent,
     EditserviceasadminComponent,
+    EditserviceasworkerComponent,
   ],
   imports: [
     BrowserModule,
