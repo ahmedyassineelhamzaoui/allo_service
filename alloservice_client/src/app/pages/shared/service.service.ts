@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment.development';
 import { AddServiceReqeustInterface } from './types/addServiceRequest.interface';
 import { ResponseWithDetailsInterface } from '../../auth/shared/types/responseWithDetails.interface';
 import { Observable } from 'rxjs';
+import { RequestStatusInterface } from './types/requestStatus.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,8 @@ export class ServiceService {
   }
   getServiceDetails(id: string): Observable<ResponseWithDetailsInterface>{
     return this.http.get<ResponseWithDetailsInterface>(environment.apiURL + 'service/' + id);
+  }
+  editServiceAsAdmin(id: string, request:RequestStatusInterface): Observable<ResponseWithDetailsInterface>{
+    return this.http.put<ResponseWithDetailsInterface>(environment.apiURL + 'service/editserviceasadmin/' + id, request);
   }
 } 
