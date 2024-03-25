@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddserviceComponent } from './addservice/addservice.component';
 import { ServiceService } from '../../shared/service.service';
 import { ServicedetailsComponent } from './servicedetails/servicedetails.component';
+import { EditserviceasadminComponent } from './editserviceasadmin/editserviceasadmin.component';
 
 @Component({
   selector: 'app-services',
@@ -29,6 +30,13 @@ export class ServicesComponent {
     this.getAllServices();
   }
 
+  openEditServiceAsAdmin(id:string):void{
+    this.dialog.open(EditserviceasadminComponent,{
+      data:{
+        id: id
+      }
+    });
+  }
   hasRole(role: string): boolean {
     return this.sharedService.getRoles().some(r => r.role === role);
   }

@@ -96,7 +96,7 @@
                         <button title="more" class="p-2 rounded-md bg-green-600 mr-1 " (click)="showMoreDetails(service.id)">
                             <i class="fa-solid fa-eye text-white"></i>
                         </button>
-                        <button title="edit" class="p-2 rounded-md bg-yellow-400 mr-1 ">
+                        <button (click)="openEditServiceAsAdmin(service.id)" title="edit" class="p-2 rounded-md bg-yellow-400 mr-1 ">
                             <i class="fa-solid fa-pen-to-square text-white"></i>
                         </button>
                         <button title="delete" class="p-2 rounded-md bg-red-600 mr-1 ">
