@@ -1,4 +1,5 @@
 import { AvailabilityRequestInterface } from "./availabilityRequest.interface";
+import { PictureInterface } from "./picture.interface";
 import { TagInterface } from "./tag.interface";
 import { UserResponseInterface } from "./userResponse.interface";
 
@@ -7,6 +8,7 @@ export interface ServiceResponseInterface {
     user:  UserResponseInterface;
     title: string;
     price: number;
+    servicePicture: PictureInterface;
     description: string;
     tags : TagInterface[];
     availability : AvailabilityRequestInterface[];
