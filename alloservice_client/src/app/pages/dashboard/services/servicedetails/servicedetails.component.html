@@ -10,7 +10,7 @@
         </div>
         
         <div class="flex justify-center">
-            <img src="assets/images/product_01.jpg" class="rounded-md" style="width: 70% !important;" alt="image">
+            <img src="" class="rounded-md" style="width: 70% !important;" alt="image">
         </div>
         <div class="flex justify-center">
             <div class="flex flex-col justify-center items-center">
@@ -51,9 +51,14 @@
             </div>
         </div>
         <div class="flex mx-auto justify-between items-center" style="width: 80%;">
-            <button class="p-2 rounded-md bg-green-500 mr-1 text-white">
-                <i class="fa-brands fa-whatsapp mr-2 font-bold"></i> 0636383838
-            </button>
+            @if(service.user.phone){
+                <button class="p-2 rounded-md bg-green-500 mr-1 text-white">
+                    <i class="fa-brands fa-whatsapp mr-2 font-bold"></i> 0636383838
+                </button>
+            }@else {
+                <div></div>
+            }
+            
             <p class="text-lg text-gray-500">{{service.price}} <span>MAD</span></p>
         </div>
     </div>
