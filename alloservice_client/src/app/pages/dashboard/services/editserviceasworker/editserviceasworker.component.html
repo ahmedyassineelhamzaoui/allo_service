@@ -1,1 +1,144 @@
-<p>editserviceasworker works!</p>
+<div id="update-service-container">
+    <form  id="update-service-form" enctype="multipart/form-data">
+        <div class="mt-3 grid grid-cols-2 gap-2">
+            <div>
+                <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Title
+                </label>
+                <input type="text" formControlName="title"
+                    class="block w-full py-2.5 text-sm border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                <!-- <strong class="text-danger" *ngIf="form.get('title')?.invalid && form.get('title')?.touched">
+                    title is required.
+                </strong> -->
+            </div>
+            <div>
+                <label for="price" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Price
+                </label>
+                <div class="flex items-center ">
+                    <div class="relative w-full">
+                        <div class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M5 2a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1M2 5h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
+                            </svg>
+                        </div>
+                        <input type="number" formControlName="price"
+                            class="block p-2.5 w-full z-20 ps-10 text-sm text-gray-900 bg-gray-50 rounded-s-lg border-e-gray-50 border-e-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-e-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                            placeholder="Enter amount" required />
+                        
+                    </div>
+                    <button id="dropdown-currency-button" data-dropdown-toggle="dropdown-currency"
+                        class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-e-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
+                        type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="20" viewBox="0 0 32 32">
+                            <rect x="1" y="4" width="30" height="24" rx="4" ry="4" fill="#b33431"></rect>
+                            <path
+                                d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z"
+                                opacity=".15"></path>
+                            <path
+                                d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z"
+                                fill="#fff" opacity=".2"></path>
+                            <path
+                                d="M20.224,21.868l-4.224-3.069-4.224,3.069,1.613-4.965-4.224-3.069h5.221l1.613-4.966,1.613,4.966h5.221l-4.224,3.069,1.613,4.965Zm-3.456-3.626l1.74,1.264-.665-2.045-1.075,.781Zm-2.611-.781l-.665,2.045,1.74-1.264-1.075-.781Zm.293-.902l1.55,1.126,1.55-1.126-.592-1.822h-1.916l-.592,1.822Zm3.456-1.822l.411,1.264,1.74-1.264h-2.151Zm-5.964,0l1.74,1.264,.411-1.264h-2.151Zm3.393-.902h1.329l-.665-2.046-.665,2.046Z"
+                                fill="#286038"></path>
+                        </svg>
+                        MAD </button>
+                </div>
+                <!-- <strong class="text-danger" *ngIf="form.get('price')?.invalid && form.get('price')?.touched">
+                    price is required.
+                </strong> -->
+            </div>
+        </div>
+        <div>
+            <label for="description" class="mt-2 block text-sm font-medium text-gray-700 dark:text-gray-400">Description
+            </label>
+            <textarea formControlName="description" rows="4"
+                class="block  w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Write your description here..."></textarea>
+            <!-- <strong class="text-danger" *ngIf="form.get('description')?.invalid && form.get('description')?.touched">
+                description is required.
+            </strong> -->
+        </div>
+        <div>
+            <label for="picture" class="block text-sm font-medium text-gray-700 dark:text-gray-400">service
+                picture
+            </label>
+            <input type="file" accept="image/png,image/jpeg,image/jpg" formControlName="servicePicture"
+                 class="block w-full mt-1 text-sm border border-gray-300 rounded-md ">
+            <!-- <strong class="text-danger"
+                *ngIf="form.get('servicePicture')?.invalid && form.get('servicePicture')?.touched">
+                picture is required.
+            </strong> -->
+        </div>
+        <!-- <div>
+            <label for="tags" class="mt-2 block text-sm font-medium text-gray-700 dark:text-gray-400">Tags</label>
+            <ng-select formControlName="tags" [items]="tags" bindLabel="name" bindValue="id" [multiple]="true"
+                [closeOnSelect]="false"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            </ng-select>
+            <strong *ngIf="form.get('tags')?.invalid && form.get('tags')?.touched">
+                <span class="text-danger">Two tags at least are required</span>
+            </strong>
+        </div> -->
+        <div class="mt-2">
+            <div class="flex align-center justify-between">
+                <label for="availability" class="block text-sm mt-3 font-medium text-gray-700">availability</label>
+                <div class="flex items-center">
+
+                    <button type="button" 
+                        class="text-white bg-purple-500  hover:bg-green-600 font-medium rounded-md  px-2.5 py-2 text-center me-2 mb-2"><i
+                            class="fa-solid fa-plus"></i></button>
+                </div>
+            </div>
+            <!-- <ng-container formArrayName="availabilities" class="w-100">
+                <ng-container *ngFor="let item of availabilities.controls; let i = index" class="w-100">
+                    <div class="flex justify-between items-center w-full" [formGroupName]="i">
+                        <div class="flex-1 mr-1 ">
+                            <input type="time" formControlName="startTime"
+                                class="block w-full py-2.5 mt-1 text-sm border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                            <strong class="text-danger"
+                                *ngIf="form.get('availabilities')!.get(i.toString())!.get('startTime')?.invalid && form.get('availabilities')?.get(i.toString())?.get('startTime')?.touched">
+                                Start time is required.
+                            </strong>
+                        </div>
+                        <div class="flex-1 mr-1">
+                            <input type="time" formControlName="endTime"
+                                class="block w-full py-2.5 mt-1 text-sm border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                            <strong class="text-danger"
+                                *ngIf="form.get('availabilities')!.get(i.toString())!.get('endTime')?.invalid && form.get('availabilities')?.get(i.toString())?.get('endTime')?.touched">
+                                End time is required.
+                            </strong>
+                        </div>
+                        <div class="flex-1 mr-1">
+                            <ng-select formControlName="day" [items]="days" bindLabel="name" bindValue="id"
+                                [multiple]="true" [closeOnSelect]="false"
+                                class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-1">
+                            </ng-select>
+                            <strong class="text-danger"
+                                *ngIf="form.get('availabilities')!.get(i.toString())!.get('day')?.invalid && form.get('availabilities')?.get(i.toString())?.get('day')?.touched">
+                                One Day at least are required.
+                            </strong>
+                        </div>
+
+
+                        <button type="button" (click)="removeAvailability(i)"
+                            [ngClass]="{'hidden': availabilities.length === 1}"
+                            class="w-1/12 text-white bg-pink-500  font-medium rounded-md px-2.5 py-2 text-center me-2 "><i
+                                class="fa-solid fa-minus"></i></button>
+                    </div>
+                </ng-container>
+            </ng-container> -->
+
+        </div>
+
+        <div class="flex justify-end align-center my-4 ">
+            <button type="button" type="submit" 
+                class="text-blue-700  border border-blue-700   font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 flex items-center justify-between">
+                <span>update</span>
+            </button>
+            <button type="button" (click)="closeEditServiceModal()"
+                class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Close</button>
+        </div>
+    </form>
+</div>

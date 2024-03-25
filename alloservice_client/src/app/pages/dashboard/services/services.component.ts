@@ -46,8 +46,7 @@ export class ServicesComponent {
   openEditServiceAsWWorker(id:string):void{
     const dialog = this.dialog.open(EditserviceasworkerComponent,{
       data:{
-        id: id,
-        status :status
+        id: id
       }
     });
     dialog.afterClosed().subscribe(()=>{
