@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-editserviceasadmin',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class EditserviceasadminComponent {
 
+  constructor(private dialogRef:MatDialogRef<EditserviceasadminComponent>){}
+
+  closeEditTagModal():void{
+    this.dialogRef.close();
+  }
 }
