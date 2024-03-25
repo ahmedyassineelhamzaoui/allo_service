@@ -1,7 +1,6 @@
 <div id="update-service-container">
 
-    <form id="update-service-form">
-
+    <form [formGroup]="form" id="update-service-form">
         <div class="flex justify-start">
             <h2 class="font-bold">Edit Service</h2>
         </div>
@@ -10,15 +9,17 @@
                 <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-400">
                     Service Status
                 </label>
-                <input type="text" name="name" formControlName="name"
+                <select name="serviceStatus" formControlName="serviceStatus"
                     class="block w-full mt-1 text-sm border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                    <option *ngFor="let status of serviceStatus" [value]="status.value">{{status.name}}</option>
+                </select>
             </div>
         </div>
         <div class="flex justify-end align-center my-4 ">
-            <button  type="button" type="submit"
-                class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">save</button>
-                
-                <button  type="button" (click)="closeEditTagModal()"
+            <button type="button" type="submit"
+                class="text-yellow-700 hover:text-white border border-yellow-700 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">update</button>
+
+            <button type="button" (click)="closeEditTagModal()"
                 class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Close</button>
         </div>
     </form>
