@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-editserviceasadmin',
@@ -14,15 +14,21 @@ export class EditserviceasadminComponent {
     {name:'approved',value:'APPROVED'},
     {name:'rejected',value:'NOT_APPROVED'}
   ]
+  form = this.fb.group({
+    serviceStatus: ['PENDING'],
+  });
   constructor(
     private dialogRef:MatDialogRef<EditserviceasadminComponent>,
     private fb: FormBuilder,
-    ){}
+    @Inject(MAT_DIALOG_DATA) public data: { id: string,status: string},
+    ){
+      this.form = this.fb.group({
+        serviceStatus: [this.data.status]
+      });
+    }
 
   closeEditTagModal():void{
     this.dialogRef.close();
   }
-  form = this.fb.group({
-    serviceStatus: ['PENDING'],
-  });
+  
 }

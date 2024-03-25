@@ -30,10 +30,11 @@ export class ServicesComponent {
     this.getAllServices();
   }
 
-  openEditServiceAsAdmin(id:string):void{
+  openEditServiceAsAdmin(id:string,status:string):void{
     this.dialog.open(EditserviceasadminComponent,{
       data:{
-        id: id
+        id: id,
+        status :status
       }
     });
   }
