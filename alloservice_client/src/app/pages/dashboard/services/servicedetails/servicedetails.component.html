@@ -24,16 +24,20 @@
         <div class="mt-1">
             <p style="width: 80%;margin-left: 10%;font-weight: bolder;">Availabilities</p>
         </div>
-        @for(availability of service.availabilities ; track $index ){
-            <div class="flex mx-auto justify-between items-center" style="width: 80%;">
+        @for(availability of service.availability ; track $index ){
+            <div class="flex mx-auto justify-between items-center mb-2" style="width: 80%;">
                 <div>
-                    <span class="mr-1 mb-1">{{availability.startTime}}</span>
+                    <span class="mr-1 mb-1 font-bold">{{availability.startTime}}</span>
                     to
-                    <span class="mr-1 mb-1">{{availability.endTime}}</span>
+                    <span class="mr-1 mb-1 font-bold">{{availability.endTime}}</span> 
+                    <div>
+                        @for (day of availability.day; track $index) {
+                            <span class="bg-yellow-600 text-white rounded-md mr-1 mb-1 px-2 py-1">{{day}}</span>
+                        }
+                    </div>
                 </div>
-                <!-- @for (day of availability.day; track $index) {
-                    <span class="bg-yellow-600 text-white rounded-md mr-1 mb-1 px-2 py-1"></span>
-                } -->
+                
+                
             </div>
         }
         

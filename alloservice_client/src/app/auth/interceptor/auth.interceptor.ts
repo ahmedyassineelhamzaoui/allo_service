@@ -13,7 +13,6 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     if (request.url.endsWith('/login') || request.url.endsWith('/validate-token') || request.url.endsWith('/signup_worker')  || request.url.endsWith('/signup_user') || request.url.endsWith('/verify-email') ){
-      console.log("oj")
       return next.handle(request);
     }
     const token = this.persistanceService.get('accessToken');

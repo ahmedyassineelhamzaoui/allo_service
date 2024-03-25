@@ -102,7 +102,7 @@ import { AddtagComponent } from './pages/dashboard/tags/addtag/addtag.component'
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
 
   ],
   bootstrap: [AppComponent]

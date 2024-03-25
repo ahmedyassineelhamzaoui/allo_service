@@ -9,6 +9,6 @@ export interface ServiceResponseInterface {
     price: number;
     description: string;
     tags : TagInterface[];
-    availabilities : AvailabilityRequestInterface[];
+    availability : AvailabilityRequestInterface[];
     serviceStatus: string;
 }
