@@ -16,19 +16,23 @@ import { NavigationEnd, Router } from '@angular/router';
   ],
 })
 export class AppComponent {
-  title = 'client';
+  title = 'allo service';
 
-  showContent = true;
-  isLoading = false;
+  isLoading: boolean = true;
+  showContent = false;
 
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.showContent = !['/signup-worker', '/signup-user','/login','/verify-email','/home','/about','/contact','/services'].includes(event.urlAfterRedirects);
+        this.showContent = ['/manage_services', '/settings','/users','/tags'].includes(event.urlAfterRedirects);
       }
     });
   }
-
+  ngOnInit() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3000); 
+  }
   prepareRoute(outlet: any) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }

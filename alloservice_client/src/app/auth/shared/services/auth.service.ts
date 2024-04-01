@@ -9,6 +9,7 @@ import { MailRequestInterface } from '../types/mailRequest.interface';
 import { CurrentUserInterface } from '../types/currentUser.interface';
 import { HttpHeaders } from '@angular/common/http';
 import { RegisterRequestWorkerInterface } from '../types/registerRequestWorker.interface';
+import { LoginRequestInterface } from '../types/loginRequest.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,11 @@ export class AuthService {
             .http
             .post<ResponseWithDetailsInterface>(environment.apiUrlAuth+'signup_client',data);
   }
+  login(data: LoginRequestInterface): Observable<CurrentUserInterface>{
+    return this
+            .http
+            .post<CurrentUserInterface>(environment.apiUrlAuth+'login',data);
+  }
   registerWorker(data: RegisterRequestWorkerInterface): Observable<ResponseWithDetailsInterface>{
     return this
             .http
@@ -43,14 +49,11 @@ export class AuthService {
     this.token = token;
   }
   isTokenValid(): Observable<boolean> {
-    return this.http.post<boolean>(this.validationUrl, { token: this.token });
+    const mytoken = this.persistanceService.get('accessToken');
+    return this.http.post<boolean>(this.validationUrl, { token: mytoken });
   }
-  isUserAuthenticated(): boolean {
-    const token = this.persistanceService.get('accessToken');
-    if (token) {
-      return true;
-    } else {
-      return false;
-    }
+  
+  isAuthenticated(): Observable<boolean> {
+    return this.http.get<boolean>(environment.apiUrlAuth+'isAuthenticated');
   }
 }

@@ -1,10 +1,14 @@
 <!-- @if(!isLoading){ -->
 <div class="flex items-center justify-between mb-4">
     <h3 class="font-bold">Users</h3>
+    @if(hasPermission('CAN_ADD_USER')){
     <button type="button" (click)="openAddUserrModal()"
         class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"><i
             class="fa-solid fa-plus"></i> Add User</button>
+    }
+
 </div>
+@if(!isLoading){
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <!-- @if(errorMessage !== ''){ -->
     <!-- <div id="alert-border-2"
@@ -59,7 +63,7 @@
                 <th scope="col" class="px-6 py-3 text-center">
                     Account
                 </th>
-                <th *ngIf="hasRole('ROLE_ADMIN')" scope="col" class="px-6 py-3 text-center">
+                <th *ngIf="hasRole('ROLE_ADMIN') || hasRole('ROLE_SUPER_ADMIN')" scope="col" class="px-6 py-3 text-center">
                     Action
                 </th>
             </tr>
@@ -76,10 +80,13 @@
                 </td>
                 <td class="px-6 py-4 text-center">
                     {{user.email}}
-                </td>   
+                </td>
                 <td class="px-6 py-4 text-center">
                     <div class="flex flex-wrap justify-center">
-                        <span class="bg-purple-500 text-white rounded-md mr-1 mb-1 px-2 py-1" *ngFor="let role of user.authorities">{{role.authority}}</span>
+                        <span class="bg-purple-500 text-white rounded-md mr-1 mb-1 px-2 py-1"
+                            *ngFor="let role of user.authorities">
+                            {{ transformRole(role.authority) }}
+                        </span>
                     </div>
                 </td>
                 <td class="px-6 py-4 text-center">
@@ -96,15 +103,19 @@
                         }
                     </div>
                 </td>
-                <td *ngIf="hasRole('ROLE_ADMIN')" class="px-6 py-4">
+                <td *ngIf="hasRole('ROLE_ADMIN') || hasRole('ROLE_SUPER_ADMIN')" class="px-6 py-4">
                     <div class="flex items-center justify-center">
-                        <button *ngIf="hasRole('ROLE_ADMIN')" title="more" class="p-2 rounded-md bg-green-600 mr-1 ">
-                            <i class="fa-solid fa-eye text-white"></i> 
+                        <button (click)="openUserDetailsForm(user.id)" *ngIf="hasRole('ROLE_ADMIN')" title="more"
+                            class="p-2 rounded-md bg-green-600 mr-1 ">
+                            <i class="fa-solid fa-eye text-white"></i>
                         </button>
-                        <button  *ngIf="hasRole('ROLE_ADMIN')" (click)="openEditModal(user.enabled ? 'ACTIVE' : 'INACTIVE',user.id)" title="edit" class="p-2 rounded-md bg-yellow-400 mr-1 ">
+                        <button *ngIf="hasPermission('CAN_EDIT_USER')"
+                            (click)="openEditModal(user.enabled ? 'ACTIVE' : 'INACTIVE',user.id)" title="edit"
+                            class="p-2 rounded-md bg-yellow-400 mr-1 ">
                             <i class="fa-solid fa-pen-to-square text-white"></i>
                         </button>
-                        <button *ngIf="hasRole('ROLE_SUPER_ADMIN')" (click)="deleteUser(user.id)" title="delete" class="p-2 rounded-md bg-red-600 mr-1 ">
+                        <button *ngIf="hasPermission('CAN_DELETE_USER')" (click)="deleteUser(user.id)" title="delete"
+                            class="p-2 rounded-md bg-red-600 mr-1 ">
                             <i class="fa-solid fa-trash-can text-white "></i>
                         </button>
                     </div>
@@ -125,8 +136,8 @@
     </mat-paginator>
     <!-- } -->
 </div>
-<!-- }@else { -->
-<!-- <div class="flex items-center justify-center"> -->
-<!-- <app-spinner></app-spinner> -->
-<!-- </div> -->
-<!-- } -->
+}@else {
+<div class="flex items-center justify-center " style="margin-top: -10%;">
+    <app-spinner></app-spinner>
+</div>
+}

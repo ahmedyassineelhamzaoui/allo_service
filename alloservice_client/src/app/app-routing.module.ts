@@ -14,6 +14,9 @@ import { ForbiddenComponent } from './errors/forbidden/forbidden.component';
 import { UsersComponent } from './pages/dashboard/users/users.component';
 import { ServicesComponent } from './pages/dashboard/services/services.component';
 import { TagsComponent } from './pages/dashboard/tags/tags.component';
+import { SettingComponent } from './pages/dashboard/setting/setting.component';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { RoleGuard } from './auth/guards/role.guard';
 
 const routes: Routes = [
 
@@ -22,17 +25,18 @@ const routes: Routes = [
   {path:'home' , component: HomeComponent},
   {path:'about',component:AboutComponent},
   {path:'contact',component:ContactComponent},
-  {path:'services',component:ServiceComponent},
+  {path:'services',component:ServiceComponent, canActivate: [AuthGuard]},
   {path:'login',component:LoginComponent},
   { path: 'signup-user', component: SignupuserComponent, data: { animation: 'SignupUserPage' } },
   { path: 'signup-worker', component: SigunpworkerComponent, data: { animation: 'SignupWorkerPage' } },
   { path: 'verify-email', component: VerifyemailComponent},
   {path:'notauthorize',component:NotauthorizeComponent},
-  {path:'forbidden',component:ForbiddenComponent},
+  {path:'403',component:ForbiddenComponent},
   // dashboard routing
-  {path:'users',component:UsersComponent},
-  {path:'manage_services',component:ServicesComponent},
-  {path:'tags', component:TagsComponent},
+  {path:'users',component:UsersComponent, canActivate: [RoleGuard] },
+  {path:'manage_services',component:ServicesComponent, canActivate: [AuthGuard] },
+  {path:'tags', component:TagsComponent, canActivate: [AuthGuard] },
+  {path:'settings',component:SettingComponent, canActivate: [AuthGuard] },
    // notfound
   {path: '**', component: NotfoundComponent, pathMatch: 'full'},
 

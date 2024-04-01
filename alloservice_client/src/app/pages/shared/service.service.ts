@@ -5,6 +5,8 @@ import { AddServiceReqeustInterface } from './types/addServiceRequest.interface'
 import { ResponseWithDetailsInterface } from '../../auth/shared/types/responseWithDetails.interface';
 import { Observable } from 'rxjs';
 import { RequestStatusInterface } from './types/requestStatus.interface';
+import { UpdateServiceRequestInterface } from './types/updateServiceRequest.interface';
+import { ResponseWithoutDetailsInterface } from '../../auth/shared/types/responseWithoutDetails.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -29,14 +31,26 @@ export class ServiceService {
   getAllServices(): Observable<ResponseWithDetailsInterface>{
     return this.http.get<ResponseWithDetailsInterface>(environment.apiURL + 'services');
   }
+  getLatestSixServices(): Observable<ResponseWithDetailsInterface>{
+    return this.http.get<ResponseWithDetailsInterface>(environment.apiUrlAuth + 'getLastSixServices');
+  }
   getServiceDetails(id: string): Observable<ResponseWithDetailsInterface>{
     return this.http.get<ResponseWithDetailsInterface>(environment.apiURL + 'service/' + id);
   }
   editServiceAsAdmin(id: string, request:RequestStatusInterface): Observable<ResponseWithDetailsInterface>{
     return this.http.put<ResponseWithDetailsInterface>(environment.apiURL + 'service/editserviceasadmin/' + id, request);
   }
-
+  editServiceAsWorker(id: string, data:UpdateServiceRequestInterface,file:File): Observable<ResponseWithDetailsInterface>{
+    const formData = new FormData();
+    const dataBlob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+    formData.append('request', dataBlob);
+    formData.append('image', file, file.name);
+    return this.http.put<ResponseWithDetailsInterface>(environment.apiURL + 'service/editserviceasworker/' + id, formData);
+  }
   getServiceById(id:string): Observable<ResponseWithDetailsInterface>{
       return this.http.get<ResponseWithDetailsInterface>(environment.apiURL + 'service/'+id);
+  }
+  deleteService(id:string): Observable<ResponseWithoutDetailsInterface>{
+    return this.http.delete<ResponseWithoutDetailsInterface>(environment.apiURL + 'deleteService/'+id);
   }
 } 

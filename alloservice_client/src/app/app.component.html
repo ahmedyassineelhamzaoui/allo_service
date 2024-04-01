@@ -1,16 +1,18 @@
-<ng-container  *ngIf="isLoading; else content">
-  <!-- <app-spinner></app-spinner> -->
-</ng-container>
-<ng-template #content>
+
+@if(isLoading){
+  <div class="flex items-center justify-center">
+    <app-spinner></app-spinner>
+  </div>
+}@else {
   <ng-container>
     @if(showContent){
-      <app-navbar></app-navbar>
-      <app-sidebar></app-sidebar>
+    <app-navbar></app-navbar>
+    <app-sidebar></app-sidebar>
     }
-    <div [ngClass]="{'p-4 sm:ml-64': showContent}">
+    <div  [ngClass]="{'p-4 sm:ml-64': showContent}">
       <div [ngClass]="{'p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14': showContent}">
         <router-outlet></router-outlet>
       </div>
     </div>
   </ng-container>
-</ng-template>
+}

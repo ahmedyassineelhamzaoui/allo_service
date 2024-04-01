@@ -1,3 +1,5 @@
+<ng-container *ngIf="data$ | async as data">
+
 <div id="body">
     <div>
         <!----------------------- Main Container -------------------------->
@@ -27,19 +29,42 @@
                 <!-------------------- ------ Right Box ---------------------------->
 
                 <div class="col-md-6 right-box">
-                    <div class="row align-items-center">
+                    <form [formGroup]="formLogin" (ngSubmit)="signIn()" class="row align-items-center">
+                        <div *ngIf="showBackendError && data.backendErrors" id="alert-2" class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                            <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                            </svg>
+                            <span class="sr-only">Info</span>
+                            <div class="ms-3 text-sm font-medium">
+                                <strong>Error</strong>       {{ data.backendErrors }}
+                            </div>
+                            <button (click)="showBackendError = false" type="button" class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700" data-dismiss-target="#alert-2" aria-label="Close">
+                              <span class="sr-only">Close</span>
+                              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                              </svg>
+                            </button>
+                        </div>
                         <div class="header-text mb-4">
                             <h2>Hello,Again</h2>
                             <p>We are happy to have you back.</p>
                         </div>
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control form-control-lg bg-light fs-6"
+                        <div class="input-group">
+                            <input type="email" formControlName="email" class="form-control form-control-lg bg-light fs-6"
                                 placeholder="Email address">
+                                
                         </div>
-                        <div class="input-group mb-1">
-                            <input type="password" class="form-control form-control-lg bg-light fs-6"
+                        <strong class="mt-1 text-red-600" *ngIf="formLogin.get('email')?.invalid && formLogin.get('email')?.touched">
+                            Email must be a valid email address.
+                        </strong>
+                        <div class="input-group mt-2">
+                            <input type="password" formControlName="password" class="form-control form-control-lg bg-light fs-6"
                                 placeholder="Password">
+                                
                         </div>
+                        <strong class="mt-1 text-red-600" *ngIf="formLogin.get('password')?.invalid && formLogin.get('password')?.touched">
+                            Password is required.
+                        </strong>
                         <div class="input-group mb-5 d-flex justify-content-between">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="formCheck">
@@ -51,16 +76,20 @@
                             </div>
                         </div>
                         <div class="input-group mb-3">
-                            <button class="btn btn-lg w-100 fs-6 login">Login</button>
+                            <button [disabled]="data.isSubmiting" type="submit" class="btn btn-lg w-100 fs-6 login">Login</button>
                         </div>
                         <div class="input-group mb-3">
-                            <button class="btn btn-lg btn-light w-100 fs-6"><img src="assets/images/google.png"
-                                    style="width:20px" class="me-2"><small>Sign In with Google</small></button>
+                            <button class="btn btn-light w-100  ">
+                                <div class="flex items-center justify-center">
+                                        <img src="assets/images/google.png"  style="width:20px" class="mr-2">
+                                        <p style="margin-bottom: 0 !important;">Sign In with Google</p>
+                                </div>
+                            </button>
                         </div>
                         <div class="row">
                             <small>Don't have account? <a routerLink="/signup-worker" class="fs-6">Sign Up</a></small>
                         </div>
-                    </div>
+                    </form>
                 </div>
 
             </div>
@@ -68,3 +97,4 @@
 
     </div>
 </div>
+</ng-container>

@@ -5,6 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { EdittagComponent } from './edittag/edittag.component';
 import Swal from 'sweetalert2';
 import { AddtagComponent } from './addtag/addtag.component';
+import { TagsService } from '../../shared/tags.service';
+import { ResponseWithDetailsInterface } from '../../../auth/shared/types/responseWithDetails.interface';
 
 @Component({
   selector: 'app-tags',
@@ -15,12 +17,18 @@ export class TagsComponent {
 
   tags :TagInterface[] = [];
   currentPageIndex: number = 0;
-  pageSize:number = 5;
+  pageSize:number = 16;
+  isLoading:boolean = true;
 
   constructor(
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private tagService:TagsService
   ){}
 
+  ngOnInit(){
+    this.isLoading = true;
+    this.getAllTags();
+  }
   handlePageEvent(event:PageEvent){
     this.currentPageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
@@ -51,5 +59,16 @@ export class TagsComponent {
         )  
       }  
     })  
+  }
+  getAllTags():void{
+    this.tagService.getAllTags().subscribe(
+      (response:ResponseWithDetailsInterface)=>{
+        this.tags = response.details['tags'];
+        this.isLoading = false;
+      },
+      (error)=>{
+        this.isLoading = false;
+      }
+    )
   }
 }

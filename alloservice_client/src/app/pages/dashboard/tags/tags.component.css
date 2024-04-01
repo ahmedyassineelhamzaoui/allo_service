@@ -1,0 +1,16 @@
+.edit-color{
+    color: #9CAFAA;
+}
+.delete-color{
+    color: #e4aa84;
+}
+.tag-color{
+    color: #9fad6e;
+}
+.scale-on-hover {
+    transition: transform 0.2s;
+  }
+  
+  .scale-on-hover:hover {
+    transform: scale(1.05);
+  }

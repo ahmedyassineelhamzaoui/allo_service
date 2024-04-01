@@ -1,65 +1,78 @@
 <div id="service-details-container">
     <div id="service-details">
         <div class="flex justify-end">
-            <button (click)="closeModal()" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-hide="default-modal">
-                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+            <button (click)="closeModal()" type="button"
+                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
+                data-modal-hide="default-modal">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                 </svg>
                 <span class="sr-only">Close modal</span>
             </button>
         </div>
-        
-        <div class="flex justify-center">
-            <img src="{{service.servicePicture.link}}" class="rounded-md" style="width: 80% !important;height: auto;" alt="image">
-        </div>
-        <div class="flex justify-center">
-            <div class="flex flex-col justify-center items-center">
-                <h1 class="text-2xl font-bold text-blue-800">{{service.title}}</h1>
-                <p class="text-lg text-gray-500 " style="width: 80%;max-height: 20vh;overflow-y: auto;">
-                {{service.description}}
-                </p>
-            </div>
-        </div>
-        
-        <div class="mt-1">
-            <p style="width: 80%;margin-left: 10%;font-weight: bolder;">Availabilities</p>
-        </div>
-        @for(availability of service.availability ; track $index ){
-            <div class="flex mx-auto justify-between items-center mb-2" style="width: 80%;">
-                <div>
-                    <span class="mr-1 mb-1 font-bold">{{availability.startTime}}</span>
-                    to
-                    <span class="mr-1 mb-1 font-bold">{{availability.endTime}}</span> 
-                    <div>
-                        @for (day of availability.day; track $index) {
-                            <span class="bg-yellow-600 text-white rounded-md mr-1 mb-1 px-2 py-1">{{day}}</span>
-                        }
+
+        <div class="relative flex flex-col sm:flex-row xl:flex-col items-start">
+            <div class="order-1 sm:ml-6 xl:ml-0 ml-2">
+                <h3 style="font-weight: bolder;" class="mb-1">
+                    {{service.title}}
+                </h3>
+                <div class="prose prose-slate prose-sm text-slate-600 dark:prose-dark">
+                    <p class="service-description ">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis at adipisci voluptates maxime eligendi earum facere sed debitis aperiam ab magnam ipsam aliquid, cum ipsa necessitatibus molestiae illo cupiditate distinctio?
+                        Suscipit alias ex est dicta beatae quisquam minima, qui a dolore dignissimos, voluptatem dolorem, inventore illo velit maiores aperiam debitis eveniet quod saepe corrupti aliquam nisi cupiditate. In, quia. Exercitationem?
+                        Tempora est fugit, nam cumque architecto illo? Necessitatibus delectus magnam ad. Assumenda saepe totam aut, molestiae quia consequatur laudantium dolore nihil amet dolor cum necessitatibus? Quidem officia neque tempore accusamus!
+                        Inventore mollitia nobis libero delectus vero perspiciatis distinctio soluta cum ullam? Molestias consequatur rerum ea exercitationem repellat facere, harum esse incidunt quidem ullam! Deleniti perferendis explicabo sunt ducimus neque commodi?
+                        Vel velit doloribus officia quia unde odio consequatur cupiditate facere sint magni molestiae dignissimos dolores, a tempora? Tempora explicabo, officiis nam blanditiis non ea harum ducimus reprehenderit eum iure maiores!
+                        Nam possimus, adipisci fuga ipsum maiores, architecto illo consequatur quis aperiam sint illum harum, odit veniam. Impedit officiis voluptatum doloribus porro! Accusamus ad consequatur itaque repudiandae officia dolores pariatur deleniti!
+                        Amet, pariatur id molestias nostrum velit ipsam sunt culpa animi. Officia accusamus praesentium nostrum, modi, nihil nesciunt obcaecati blanditiis, doloremque est expedita ea dolor iusto debitis qui sunt pariatur laborum.
+                        Quas tempore minus ducimus officia perferendis, ut ex excepturi quis sapiente. Obcaecati necessitatibus ipsam exercitationem eveniet, sapiente officia fuga nobis velit quidem dolor laboriosam reiciendis doloremque labore quia cum itaque.
+                        Vero blanditiis dolores quo suscipit? Eaque quis obcaecati est, accusamus quos ducimus labore facilis molestias et cumque beatae itaque ipsa atque quod quidem laborum eos consectetur autem! Unde, voluptatibus aspernatur?
+                        Atque, exercitationem quaerat libero dicta fugit placeat, iure eaque saepe nesciunt molestiae vel unde! Culpa maiores suscipit ut. Cum perferendis aliquam ex iure rerum suscipit ratione reiciendis aspernatur possimus dolorem!
+                    </p>
+                </div>
+                <div class="flex justify-center">
+                    <div class="flex flex-col justify-center items-center">
+                        <div class="flex flex-wrap justify-center">
+                            @for(tag of service.tags; track tag.id){
+                            <span style="background-color: #D6DAC8;" class="text-dark rounded-md mr-1 mb-1 px-2 py-1">{{tag.name}}</span>
+                            }
+                        </div>
                     </div>
                 </div>
-                
-                
-            </div>
-        }
-        
-        <div class="flex justify-center">
-            <div class="flex flex-col justify-center items-center" >
-                <div class="flex flex-wrap justify-center">
-                    @for(tag of service.tags; track tag.id){
-                        <span class="bg-pink-500 text-white rounded-md mr-1 mb-1 px-2 py-1">{{tag.name}}</span>
+            </div><img src="{{service.servicePicture.link}}" alt="image" style="width:30%;height: 40vh;"
+                class="mb-6 shadow-md rounded-lg bg-slate-50 w-full sm:w-[17rem] sm:mb-0 xl:mb-6" 
+                >
+        </div>
+        @for(availability of service.availability ; track $index ){
+        <div class="flex justify-between items-center mb-2" style="width: 80%;">
+            <div>
+                <span class="mr-1 mb-1 font-bold">{{availability.startTime}}</span>
+                to
+                <span class="mr-1 mb-1 font-bold">{{availability.endTime}}</span>
+                <div>
+                    @for (day of availability.day; track $index) {
+                    <span style="background-color: #FFEBB2;" class="text-gray-600 rounded-md mr-1 mb-1 px-2 py-1">{{day}}</span>
                     }
                 </div>
             </div>
+
+
         </div>
-        <div class="flex mx-auto justify-between items-center" style="width: 80%;">
+        }
+
+        
+        <div class="flex mx-auto justify-between items-center">
             @if(service.user.phone){
-                <button class="p-2 rounded-md bg-green-500 mr-1 text-white">
-                    <i class="fa-brands fa-whatsapp mr-2 font-bold"></i> 0636383838
-                </button>
+            <button style="background-color: #9CAFAA;" class="p-2 rounded-md  mr-1 text-white">
+                <i class="fa-brands fa-whatsapp mr-2 font-bold"></i> {{service.user.phone}}
+            </button>
             }@else {
-                <div></div>
+            <div></div>
             }
-            
-            <p class="text-lg text-gray-500">{{service.price}} <span>MAD</span>/h</p>
+
+            <p style="background-color: #E9A89B;" class="text-lg text-white px-2 py-1 rounded-md">{{service.price}} <span>MAD</span>/h</p>
         </div>
     </div>
 </div>

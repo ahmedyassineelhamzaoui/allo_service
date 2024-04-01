@@ -1,26 +1,13 @@
-<!-- @if(!isLoading){ -->
 <div class="flex items-center justify-between mb-4">
     <h3 class="font-bold">Services</h3>
-    <button type="button" (click)="openAddServiceModal()"
+    @if(hasPermission("CAN_ADD_SERVICE")){
+        <button type="button" (click)="openAddServiceModal()"
         class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"><i
             class="fa-solid fa-plus"></i> Add Service</button>
+    }
 </div>
+@if(!isLoading){
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <!-- @if(errorMessage !== ''){ -->
-    <!-- <div id="alert-border-2"
-                class="flex items-center p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800"
-                role="alert">
-                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                    viewBox="0 0 20 20">
-                    <path
-                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                </svg>
-                <div class="ms-3 text-sm font-medium">
-                    <span>Error </span> {{errorMessage}}
-                </div>
-            </div> -->
-    <!-- }@else{ -->
-
 
     <form class="mb-4">
         <label for="default-search"
@@ -75,8 +62,7 @@
                     {{service.description.length > 20 ? service.description.substring(0, 20) + '...' : service.description}}
                 </td>
                 <td class="px-6 py-4 text-center">
-                    {{service.id}}
-                    {{service.price}}
+                    {{service.price}} MAD
                 </td>
                 <td class="px-6 py-4 text-center">
                     {{service.serviceStatus}}
@@ -105,10 +91,11 @@
                                 <i class="fa-solid fa-pen-to-square text-white"></i>
                             </button>
                         }
-                        
-                        <button title="delete" class="p-2 rounded-md bg-red-600 mr-1 ">
-                            <i class="fa-solid fa-trash-can text-white "></i>
-                        </button>
+                        @if(hasPermission("CAN_DELETE_SERVICE")){
+                            <button (click)="deleteService(service.id)" title="delete" class="p-2 rounded-md bg-red-600 mr-1 ">
+                                <i class="fa-solid fa-trash-can text-white "></i>
+                            </button>
+                        }
                     </div>
                 </td>
             </tr>
@@ -125,10 +112,9 @@
     <mat-paginator [length]="services.length" [showFirstLastButtons]="true" [pageSizeOptions]="[5, 10, 25, 100]"
         [pageIndex]="currentPageIndex" (page)="handlePageEvent($event)">
     </mat-paginator>
-    <!-- } -->
 </div>
-<!-- }@else { -->
-<!-- <div class="flex items-center justify-center"> -->
-<!-- <app-spinner></app-spinner> -->
-<!-- </div> -->
-<!-- } -->
+}@else { 
+<div class="flex items-center justify-center"  style="margin-top: -10%;">
+<app-spinner></app-spinner>
+</div>
+}

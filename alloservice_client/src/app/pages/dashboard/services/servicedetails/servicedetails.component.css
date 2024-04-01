@@ -39,3 +39,7 @@
 .scrollable::-webkit-scrollbar {
 border-radius: inherit;
 }
+.service-description{
+  max-height: 34vh;
+  overflow-y: auto;
+}

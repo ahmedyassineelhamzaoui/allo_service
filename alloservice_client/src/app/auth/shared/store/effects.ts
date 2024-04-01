@@ -10,6 +10,7 @@ import { ResponseWithDetailsInterface } from "../types/responseWithDetails.inter
 import { MessageService } from "../services/message.service";
 import { CurrentUserInterface } from "../types/currentUser.interface";
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from "../../../pages/shared/user.service";
 
 
 
@@ -87,49 +88,48 @@ export const redirectAfterRegisterWorkerEffect = createEffect(
     },
     {functional: true,dispatch: false}
 );
-// export const loginEffect = createEffect(
-//     (actions$ = inject(Actions),
-//      authService = inject(AuthService),
-//      persistanceService = inject(PersistanceService),
-//      userService = inject(UserService),
-//      roleService = inject(RoleService)
-//     ) => {
-//         return actions$.pipe(
-//             ofType(loginActions.login),
-//             switchMap(({ request }) => {
-//                 return authService.login(request).pipe(
-//                     map((currentUser: CurrentUserInterface) => {
-//                         persistanceService.set('accessToken', currentUser.accessToken);
-//                         authService.setToken(currentUser.accessToken); 
-//                         userService.setFirstName(currentUser.firstName);
-//                         persistanceService.set('refreshToken', currentUser.refreshToken);
-//                         return loginActions.loginSuccess({ currentUser: currentUser }); 
-//                     }),
-//                     catchError((errorResponse: HttpErrorResponse) => {
-//                         console.log('errorResponse',errorResponse.error.details);
-//                         return of(loginActions.loginFailure({ errors: errorResponse.error.details }));
-//                     })
-//                 );
-//             })
-//         );
-//     },
+export const loginEffect = createEffect(
+    (actions$ = inject(Actions),
+     authService = inject(AuthService),
+     persistanceService = inject(PersistanceService),
+     userService = inject(UserService)
+    ) => {
+        return actions$.pipe(
+            ofType(loginActions.login),
+            switchMap(({ request }) => {
+                return authService.login(request).pipe(
+                    map((currentUser: CurrentUserInterface) => {
+                        persistanceService.set('accessToken', currentUser.accessToken);
+                        // authService.setToken(currentUser.accessToken); 
+                        persistanceService.set('refreshToken', currentUser.refreshToken);
+                        return loginActions.loginSuccess({ currentUser: currentUser }); 
+                    }),
+                    catchError((errorResponse: HttpErrorResponse) => {
+                        console.log('errorResponse',errorResponse.error.message);
+                        return of(loginActions.loginFailure({ errors: errorResponse.error.message }));
+                    })
+                );
+            })
+        );
+    },
 
-//     { functional: true }
-// );
-// export const redirectAfterLoginEffect = createEffect(
-//      (actions$ = inject(Actions),     persistanceService = inject(PersistanceService)
-//      , router= inject(Router)) => {
-//         return actions$.pipe(
-//             ofType(loginActions.loginSuccess),
-//             tap(() => {
-//                 console.log('redirectAfterLoginEffect');
-//                 console.log('token',persistanceService.get('accessToken'));
-//                 router.navigateByUrl('/competition');
-//             })
-//         )
-//      },
-//     {functional: true,dispatch: false}
-// );
+    { functional: true }
+);
+
+export const redirectAfterLoginEffect = createEffect(
+     (actions$ = inject(Actions),     persistanceService = inject(PersistanceService)
+     , router= inject(Router)) => {
+        return actions$.pipe(
+            ofType(loginActions.loginSuccess),
+            tap(() => {
+                console.log('redirectAfterLoginEffect');
+                console.log('token',persistanceService.get('accessToken'));
+                router.navigateByUrl('/home');
+            })
+        )
+     },
+    {functional: true,dispatch: false}
+);
 export const mailVerificationEffect = createEffect(
     (actions$ = inject(Actions),
      authService = inject(AuthService),

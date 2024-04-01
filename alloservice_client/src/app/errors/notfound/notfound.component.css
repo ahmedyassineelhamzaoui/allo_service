@@ -11,7 +11,7 @@ h1 {
     font-size: 12em;
     margin-bottom: 1em;
     font-weight: bold;
-    color: #f33f3f;
+    color: #3f60f3;
 }
 h2{
     font-weight: bolder;
@@ -19,13 +19,16 @@ h2{
 p {
     font-size: 2em;
     margin-bottom: 1em;
-    color: #f33f3f;
+    color: #3f60f3;
 }
 
 .home-button{
     color:whitesmoke;
     padding:10px 12px;
-    background-color:#f33f3f;
+    background-color:#3f60f3;
     border-radius: 10px;
     font-size: 1.5em;
+}
+a{
+    text-decoration: none;
 }

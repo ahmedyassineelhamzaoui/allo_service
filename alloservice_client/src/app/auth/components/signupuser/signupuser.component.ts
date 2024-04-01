@@ -21,7 +21,9 @@ export class SignupuserComponent {
   constructor(
     private fb: FormBuilder,
     private store: Store) { }
-
+    ngOnInit() {
+      this.showBackendError = false;
+    }
     form = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],

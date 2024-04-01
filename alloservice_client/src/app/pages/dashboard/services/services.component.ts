@@ -7,6 +7,8 @@ import { ServiceService } from '../../shared/service.service';
 import { ServicedetailsComponent } from './servicedetails/servicedetails.component';
 import { EditserviceasadminComponent } from './editserviceasadmin/editserviceasadmin.component';
 import { EditserviceasworkerComponent } from './editserviceasworker/editserviceasworker.component';
+import Swal from 'sweetalert2';
+import { ResponseWithoutDetailsInterface } from '../../../auth/shared/types/responseWithoutDetails.interface';
 
 @Component({
   selector: 'app-services',
@@ -15,7 +17,7 @@ import { EditserviceasworkerComponent } from './editserviceasworker/editservicea
 })
 export class ServicesComponent {
 
-  isLoading:boolean = false;
+  isLoading:boolean = true;
   errorMessage:string = '';
   services:any[] = [];
   pageSize:number = 5;
@@ -74,13 +76,13 @@ export class ServicesComponent {
   }
 
   getAllServices() {
-    this.isLoading = true;
     this.serviceService.getAllServices().subscribe(
     (response:any)=>{
       this.services = response.details.services;
+      this.isLoading = false;
     },(error)=>{
-      console.log(error)
       this.errorMessage = error.error.message;
+      this.isLoading = false;
     });
   }
   showMoreDetails(id:string){
@@ -89,5 +91,48 @@ export class ServicesComponent {
         id: id
       }
     });
+  }
+  deleteService(id:string) {
+    Swal.fire({  
+      title: 'Are you sure want to remove?',  
+      text: 'You will not be able to recover this service!',  
+      icon: 'warning',  
+      showCancelButton: true,  
+      confirmButtonText: 'Yes, delete it!',  
+      cancelButtonText: 'No, keep it'  
+    }).then((result) => {  
+      if (result.value) {  
+        this.serviceService.deleteService(id).subscribe(
+          (response:ResponseWithoutDetailsInterface) => {
+            this.services = [];
+            this.getAllServices();
+            Swal.fire(  
+              'Deleted!',  
+              'service has been deleted successfuly.',  
+              'success'  
+            ) 
+          },
+          (error) => {
+            console.log(error);
+            Swal.fire(  
+              'Error!',  
+              this.getFirstError(error.error.details),  
+              'error'  
+            ) 
+          }
+        );
+         
+      } else if (result.dismiss === Swal.DismissReason.cancel) {  
+        Swal.fire(  
+          'Cancelled',  
+          'your data are safe',  
+          'info'  
+        )  
+      }  
+    })  
+  }
+  getFirstError(errors: any): string {
+    const firstKey = Object.keys(errors)[0];
+    return errors[firstKey];
   }
 }

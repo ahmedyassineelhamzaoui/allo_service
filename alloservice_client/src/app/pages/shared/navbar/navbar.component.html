@@ -22,26 +22,25 @@
       <div class="flex items-center">
         <div class="relative inline-bloc">
           <div>
-            <button (click)="toggleDropdown()" type="button" class="flex text-sm bg-gray-800 rounded-full"
-              aria-expanded="false" data-dropdown-toggle="dropdown-user">
+            <button (click)="toggleDropdown()" type="button" class="flex text-sm border border-gray-500 rounded-full">
               <span class="sr-only">Open user menu</span>
-              <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+              <img class="w-8 h-8 rounded-full" src="{{pictureLink}}"
                 alt="user photo">
             </button>
           </div>
           <div [class.hidden]="!dropdownOpen"
             class="absolute right-0 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg">
-            <a  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+            <a routerLink="/manage_services" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Dashboard
             </a>
 
-            <a  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+            <a routerLink="/settings"  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Settings
             </a>
 
-            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+            <span (click)="logout()" class="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Sign Out
-            </a>
+            </span>
           </div>
         </div>
       </div>

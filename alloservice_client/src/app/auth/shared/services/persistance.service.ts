@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersistanceService {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   set(key: string, data: unknown): void{
     try{
@@ -20,6 +23,7 @@ export class PersistanceService {
        return localStorageItem ? JSON.parse(localStorageItem) : null;
      }catch(e){
        console.log('Error getting data from localStorage',e);
+       this.router.navigate(['/login']);
        return null;
      }
  }

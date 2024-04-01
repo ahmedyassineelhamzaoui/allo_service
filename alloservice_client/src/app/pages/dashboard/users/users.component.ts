@@ -6,6 +6,7 @@ import { MatDialog,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SharedService } from '../../shared/shared.service';
 import { EdituserComponent } from './edituser/edituser.component';
 import Swal from 'sweetalert2';
+import { UserdetailsComponent } from './userdetails/userdetails.component';
 
 @Component({
   selector: 'app-users',
@@ -20,13 +21,14 @@ export class UsersComponent {
     private sharedService: SharedService
     ) { }
  
-  isLoading:boolean = false;
+  isLoading:boolean = true;
   errorMessage:string = '';
   users:any[] = [];
   pageSize:number = 5;
   currentPageIndex:number = 0;
 
   ngOnInit() {
+    this.isLoading = true;
     this.getAllUsers();
   }
 
@@ -42,6 +44,7 @@ export class UsersComponent {
     return errors[firstKey];
   }
   getAllUsers() {
+    console.log(this.sharedService.getRoles());
     this.userService.getAllUsers().subscribe(
       (response:any) => {
         this.isLoading = false;
@@ -72,10 +75,16 @@ export class UsersComponent {
   }
 
   deleteUser(id:string) {
-
+    let message:string ='';
+    let name:string = '';
+    let numberOfServices  = this.checkIfUserHasServices(id);
+    if( numberOfServices> 0){
+      numberOfServices > 1 ? name ="services" : name = "service";
+      message = "this user has "+numberOfServices+" "+name+",you will be delete also this "+name+" related to it. ";
+    }
     Swal.fire({  
-      title: 'Are you sure want to remove?',  
-      text: 'You will not be able to recover this user!',  
+      title: 'Are you sure want to remove this user?',  
+      text: message ? message : 'You will not be able to recover this user!',  
       icon: 'warning',  
       showCancelButton: true,  
       confirmButtonText: 'Yes, delete it!',  
@@ -121,4 +130,19 @@ export class UsersComponent {
   hasPermission(permission: string): boolean {
     return this.sharedService.getRoles().some(r => r.permissions.includes(permission));
   }
+
+  transformRole(role: string): string {
+    return role.replace('ROLE_', '').replace('_',' ').toLowerCase();
+  }
+  openUserDetailsForm(id:string) {
+    this.dialog.open(UserdetailsComponent,{
+      data: {
+        id:id
+      }
+    });
+  }
+  checkIfUserHasServices(id:string):number{
+    return this.users.find(user => user.id === id).services.length;
+  }
+
 }

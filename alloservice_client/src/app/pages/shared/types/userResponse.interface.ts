@@ -1,3 +1,4 @@
+import { PictureInterface } from "./picture.interface";
 import { RoleInterface } from "./role.interface";
 
 export interface UserResponseInterface{

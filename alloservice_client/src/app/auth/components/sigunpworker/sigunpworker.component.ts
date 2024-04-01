@@ -66,7 +66,9 @@ export class SigunpworkerComponent {
     {value:'MALE',name:'Male'},
     {value:'FEMALE',name:'Female'}
   ]
-
+  ngOnInit() {
+    this.showBackendError = false;
+  }
   onSubmit() {
 
 
